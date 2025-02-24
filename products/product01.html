@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product 1 - Rhodex</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+            <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <!-- For Subpages -->
+    <header class="subpage-header">
+        <nav>
+            <a href="../index.html">Главная</a>
+            <a href="../brand-story.html">История бренда</a>
+            <a href="../gallery.html">Галерея</a>
+            <a href="../results.html">Результаты</a>
+        </nav>
+    </header>
+
+    <!-- Product Details -->
+    <div class="product-details">
+        <div class="product-image-container">
+            <img src="../images/products/product01.jpg" alt="Luminar Facial Soap" class="product-image-large">
+        </div>
+        <div class="product-info">
+            <h2>Luminar Facial Soap - Твердая пенка</h2>
+            <p><strong>Описание:</strong> Усиленный увлажняющий эффект при очищении лица за счет более чем 88% комплекса травяных ферментов.</p>
+            <p><strong>Емкость и вес:</strong> 120г</p>
+        </div>
+    </div>
+
+    <!-- User Guide -->
+    <div class="user-guide">
+        <h3>Использование!</h3>
+        <p> 
+            <strong>Шаг 1:</strong> Вспеньте руками и аккуратно помассируйте лицо и шею.<br>
+            <strong>Шаг 2:</strong> Нежно массируйте кожу, чтобы стимулировать кровообращение.<br>
+            <strong>Шаг 3:</strong> Промойте теплой водой и высушите мягкое полотенце.
+        </p>
+    </div>
+
+     <!-- Ingredients -->
+    <div class="user-guide">
+        <h3>Состав:</h3>
+        <p>
+        • Масло Эму  <br />
+        • Экстракт рисовых отрубей  <br />
+        • Экстракт камелии китайской  <br />
+        • Гиалуронат натрия  <br />
+        • Витамин Е (токоферол)</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <div>
+                <a href="#"><img src="../images/icons/instagram-icon.png" alt="Instagram" class="social-icon"></a>
+                <a href="#"><img src="../images/icons/telegram-icon.png" alt="Telegram" class="social-icon"></a>
+                <a href="#"><img src="../images/icons/youtube-icon.png" alt="YouTube" class="social-icon"></a>
+                <p>Phone: +998 90 356 01 00</p>
+            </div>
+        </div>
+        <p>&copy; 2025 Rhodex. All rights reserved.</p>
+    </footer>
+            <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const body = document.body;
+
+    mobileMenuToggle.addEventListener('click', () => {
+        body.classList.toggle('mobile-menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenuToggle.contains(e.target) && 
+            !document.querySelector('nav').contains(e.target)) {
+            body.classList.remove('mobile-menu-open');
+        }
+    });
+    </script>
+</body>
+</html>

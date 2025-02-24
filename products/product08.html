@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blanc Finish Cover Pact - Rhodex</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <!-- For Subpages -->
+    <header class="subpage-header">
+        <nav>
+            <a href="../index.html">Главная</a>
+            <a href="../brand-story.html">История бренда</a>
+            <a href="../gallery.html">Галерея</a>
+            <a href="../results.html">Результаты</a>
+        </nav>
+    </header>
+
+    <!-- Product Details -->
+    <div class="product-details">
+        <div class="product-image-container">
+            <img src="../images/products/product08.jpg" alt="Blanc Finish Cover Pact" class="product-image-large">
+        </div>
+        <div class="product-info">
+            <h2>Blanc Finish Cover Pact - Кушон</h2>
+            <p><strong>Описание:</strong> Создан для достижения вашей "благородности", завершая образ кристально чистой кожи с Mozzi Puff, SPF50+ / PA+++.</p>
+            <p><strong>Емкость и вес:</strong> 15 г</p>
+        </div>
+    </div>
+
+    <!-- User Guide -->
+    <div class="user-guide">
+        <h3>Использование!</h3>
+        <p>
+            <strong>Шаг 1:</strong> Нажмите на аппликатор, чтобы набрать нужное количество средства.<br>
+            <strong>Шаг 2:</strong> Наносите средство похлопывающими движениями по коже, начиная с центра лица и двигаясь наружу для равномерного покрытия.<br>
+            <strong>Шаг 3:</strong> Для достижения желаемого уровня покрытия, нанесите второй слой.
+        </p>
+    </div>
+
+     <!-- Ingredients -->
+    <div class="user-guide">
+        <h3>Состав:</h3>
+        <p>
+            • Масло Эму: Питает и увлажняет, придавая коже мягкость.<br>
+            • Аденозин: Улучшает упругость и борется с морщинами.<br>
+            • Оксид цинка: Снимает воспаления и успокаивает кожу.<br>
+            • Арбутин: Осветляет и выравнивает тон кожи.<br>
+            • Гиалуроновая кислота: Глубоко увлажняет и придаёт сияние.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <div>
+                <a href="#"><img src="../images/icons/instagram-icon.png" alt="Instagram" class="social-icon"></a>
+                <a href="#"><img src="../images/icons/telegram-icon.png" alt="Telegram" class="social-icon"></a>
+                <a href="#"><img src="../images/icons/youtube-icon.png" alt="YouTube" class="social-icon"></a>
+                <p>Телефон: +998 90 356 01 00</p>
+            </div>
+        </div>
+        <p>&copy; 2025 Rhodex. Все права защищены.</p>
+    </footer>
+    
+    <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const body = document.body;
+
+    mobileMenuToggle.addEventListener('click', () => {
+        body.classList.toggle('mobile-menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenuToggle.contains(e.target) && 
+            !document.querySelector('nav').contains(e.target)) {
+            body.classList.remove('mobile-menu-open');
+        }
+    });
+    </script>
+</body>
+</html>

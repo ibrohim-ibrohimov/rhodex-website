@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concentration Eye Cream - Rhodex</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <!-- For Subpages -->
+    <header class="subpage-header">
+        <nav>
+            <a href="../index.html">Главная</a>
+            <a href="../brand-story.html">История бренда</a>
+            <a href="../gallery.html">Галерея</a>
+            <a href="../results.html">Результаты</a>
+        </nav>
+    </header>
+
+    <!-- Product Details -->
+    <div class="product-details">
+        <div class="product-image-container">
+            <img src="../images/products/product09.jpg" alt="Concentration Eye Cream" class="product-image-large">
+        </div>
+        <div class="product-info">
+            <h2>Concentration Eye Cream - Концентрированный крем для глаз</h2>
+            <p><strong>Описание:</strong> Специализированный крем для ухода за кожей вокруг глаз, осветляющий затемненные области.</p>
+            <p><strong>Емкость и вес:</strong> 50 мл</p>
+        </div>
+    </div>
+
+    <!-- User Guide -->
+    <div class="user-guide">
+        <h3>Использование!</h3>
+        <p>
+            <strong>Шаг 1:</strong> Очистите кожу лица и подготовьте её с помощью вашего привычного тоника.<br>
+            <strong>Шаг 2:</strong> Наложите маску на лицо и шею, подгоняя её по контурам.<br>
+            <strong>Шаг 3:</strong> Оставьте маску на 15–20 минут, чтобы активные компоненты хорошо впитались.<br>
+            <strong>Шаг 4:</strong> Снимите маску и легкими похлопывающими движениями распределите остатки эссенции по коже.<br>
+            <strong>Рекомендация:</strong> Используйте маску два раза в неделю для достижения наилучшего результата.
+        </p>
+    </div>
+
+     <!-- Ingredients -->
+    <div class="user-guide">
+        <h3>Состав:</h3>
+        <p>
+            • Ниацинамид – осветляет кожу и выравнивает тон.<br>
+            • Гиалуроновая кислота – обеспечивает глубокое увлажнение.<br>
+            • Экстракт алоэ вера – восстанавливает и успокаивает кожу.<br>
+            • Экстракт шелковицы – улучшает текстуру кожи.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <div>
+                <a href="#"><img src="../images/icons/instagram-icon.png" alt="Instagram" class="social-icon"></a>
+                <a href="#"><img src="../images/icons/telegram-icon.png" alt="Telegram" class="social-icon"></a>
+                <a href="#"><img src="../images/icons/youtube-icon.png" alt="YouTube" class="social-icon"></a>
+                <p>Телефон: +998 90 356 01 00</p>
+            </div>
+        </div>
+        <p>&copy; 2025 Rhodex. Все права защищены.</p>
+    </footer>
+    
+    <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const body = document.body;
+
+    mobileMenuToggle.addEventListener('click', () => {
+        body.classList.toggle('mobile-menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenuToggle.contains(e.target) && 
+            !document.querySelector('nav').contains(e.target)) {
+            body.classList.remove('mobile-menu-open');
+        }
+    });
+    </script>
+</body>
+</html>

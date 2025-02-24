@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intensive Eye Contour Gel - Rhodex</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <!-- For Subpages -->
+    <header class="subpage-header">
+        <nav>
+            <a href="../index.html">Главная</a>
+            <a href="../brand-story.html">История бренда</a>
+            <a href="../gallery.html">Галерея</a>
+            <a href="../results.html">Результаты</a>
+        </nav>
+    </header>
+
+    <!-- Product Details -->
+    <div class="product-details">
+        <div class="product-image-container">
+            <img src="../images/products/product11.jpg" alt="Intensive Eye Contour Gel" class="product-image-large">
+        </div>
+        <div class="product-info">
+            <h2>Intensive Eye Contour Gel - Интенсивный гель для контура глаз</h2>
+            <p><strong>Описание:</strong> Увлажняющая питательная сыворотка для интенсивного ухода за уставшей и ослабленной областью вокруг глаз.</p>
+            <p><strong>Емкость и вес:</strong> 30 мл</p>
+        </div>
+    </div>
+
+    <!-- User Guide -->
+    <div class="user-guide">
+        <h3>Использование!</h3>
+        <p>
+            <strong>Шаг 1:</strong> Аккуратно нанесите гель на контур глаз и шею.<br>
+            <strong>Шаг 2:</strong> Мягко распределите средство вдоль текстуры кожи до полного впитывания.
+        </p>
+    </div>
+
+     <!-- Ingredients -->
+    <div class="user-guide">
+        <h3>Состав:</h3>
+        <p>
+            • Вода<br>
+            • Глицерин<br>
+            • Бутиленгликоль<br>
+            • Карбомер<br>
+            • Гидроксид натрия<br>
+            • Ателоколлаген<br>
+            • Экстракт семян букового дерева (Fagus sylvatica)<br>
+            • Экстракт листьев гинкго билоба<br>
+            • Бензиловый спирт<br>
+            • Бензоат натрия<br>
+            • Сорбат калия<br>
+            • Пальмитат ретинила<br>
+            • Ацетат токоферила<br>
+            • Маннитол<br>
+            • Салициловая кислота<br>
+            • Целлюлоза<br>
+            • Гидроксипропил метилцеллюлоза<br>
+            • Рубиновая пудра<br>
+            • Оксиды железа (CI 77499)<br>
+            • Оксиды железа (CI 77499)
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <div>
+                <a href="#"><img src="../images/icons/instagram-icon.png" alt="Instagram" class="social-icon"></a>
+                <a href="#"><img src="../images/icons/telegram-icon.png" alt="Telegram" class="social-icon"></a>
+                <a href="#"><img src="../images/icons/youtube-icon.png" alt="YouTube" class="social-icon"></a>
+                <p>Телефон: +998 90 356 01 00</p>
+            </div>
+        </div>
+        <p>&copy; 2025 Rhodex. Все права защищены.</p>
+    </footer>
+    
+    <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const body = document.body;
+
+    mobileMenuToggle.addEventListener('click', () => {
+        body.classList.toggle('mobile-menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenuToggle.contains(e.target) && 
+            !document.querySelector('nav').contains(e.target)) {
+            body.classList.remove('mobile-menu-open');
+        }
+    });
+    </script>
+</body>
+</html>

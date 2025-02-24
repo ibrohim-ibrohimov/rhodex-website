@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Rhodex</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+            <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <!-- For Subpages -->
+    <header class="subpage-header">
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="brand-story.html">История бренда</a>
+            <a href="gallery.html">Галерея</a>
+            <a href="results.html">Результаты</a>
+        </nav>
+    </header>
+
+    <!-- Results Content -->
+    <div class="results">
+        <h2>Results</h2>
+        <div class="before-after">
+            <img src="images/results/1.png" alt="Before - After">
+            <img src="images/results/2.png" alt="Before - After">
+            <img src="images/results/3.png" alt="Before - After">
+            <img src="images/results/4.png" alt="Before - After">
+            <!-- Add more before-after pairs -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <div>
+                <a href="#"><img src="images/icons/instagram-icon.png" alt="Instagram" class="social-icon"></a>
+                <a href="#"><img src="images/icons/telegram-icon.png" alt="Telegram" class="social-icon"></a>
+                <a href="#"><img src="images/icons/youtube-icon.png" alt="YouTube" class="social-icon"></a>
+                <p>Phone: +998 90 356 01 00</p>
+            </div>
+        </div>
+        <p>&copy; 2025 Rhodex. All rights reserved.</p>
+    </footer>
+        <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const body = document.body;
+
+    mobileMenuToggle.addEventListener('click', () => {
+        body.classList.toggle('mobile-menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenuToggle.contains(e.target) && 
+            !document.querySelector('nav').contains(e.target)) {
+            body.classList.remove('mobile-menu-open');
+        }
+    });
+    </script>
+</body>
+</html>

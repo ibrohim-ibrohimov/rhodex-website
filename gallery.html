@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Rhodex</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .gallery {
+            text-align: center;
+            padding: 50px 5%;
+        }
+        .gallery h2 {
+            font-size: 28px;
+            color: rgb(60, 28, 68);
+            margin-bottom: 20px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <!-- For Subpages -->
+    <header class="subpage-header">
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="brand-story.html">История бренда</a>
+            <a href="gallery.html">Галерея</a>
+            <a href="results.html">Результаты</a>
+        </nav>
+    </header>
+
+    <!-- Gallery Content -->
+    <div class="gallery">
+        <h2>Our Product Gallery</h2>
+        <div class="gallery-grid">
+            <img src="images/gallery/product01.jpg" alt="Rhodex">
+            <img src="images/gallery/product02.jpg" alt="Rhodex">
+            <img src="images/gallery/product03.jpg" alt="Rhodex">
+            <img src="images/gallery/product04.jpg" alt="Rhodex">
+            <img src="images/gallery/product05.jpg" alt="Rhodex">
+            <img src="images/gallery/product06.jpg" alt="Rhodex">
+            <img src="images/gallery/product07.jpg" alt="Rhodex">
+            <img src="images/gallery/product08.jpg" alt="Rhodex">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <div>
+                <a href="#"><img src="images/icons/instagram-icon.png" alt="Instagram" class="social-icon"></a>
+                <a href="#"><img src="images/icons/telegram-icon.png" alt="Telegram" class="social-icon"></a>
+                <a href="#"><img src="images/icons/youtube-icon.png" alt="YouTube" class="social-icon"></a>
+                <p>Phone: +998 90 356 01 00</p>
+            </div>
+        </div>
+        <p>&copy; 2025 Rhodex. All rights reserved.</p>
+    </footer>
+    
+    <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const body = document.body;
+
+    mobileMenuToggle.addEventListener('click', () => {
+        body.classList.toggle('mobile-menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenuToggle.contains(e.target) && 
+            !document.querySelector('nav').contains(e.target)) {
+            body.classList.remove('mobile-menu-open');
+        }
+    });
+    </script>
+</body>
+</html>

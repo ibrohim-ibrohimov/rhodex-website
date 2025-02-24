@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emu Gel - Rhodex</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <!-- For Subpages -->
+    <header class="subpage-header">
+        <nav>
+            <a href="../index.html">Главная</a>
+            <a href="../brand-story.html">История бренда</a>
+            <a href="../gallery.html">Галерея</a>
+            <a href="../results.html">Результаты</a>
+        </nav>
+    </header>
+
+    <!-- Product Details -->
+    <div class="product-details">
+        <div class="product-image-container">
+            <img src="../images/products/product10.jpg" alt="Emu Gel" class="product-image-large">
+        </div>
+        <div class="product-info">
+            <h2>Emu Gel - Гель с маслом эму</h2>
+            <p><strong>Описание:</strong> Гипоаллергенный, глубокий увлажнитель для быстрого восстановления естественной шелковистой и упругой кожи. Содержит 98,35% масла эму.</p>
+            <p><strong>Емкость и вес:</strong> 50 мл</p>
+        </div>
+    </div>
+
+    <!-- User Guide -->
+    <div class="user-guide">
+        <h3>Использование!</h3>
+        <p>
+            <strong>Шаг 1:</strong> Нанесите 2-3 капли геля на чистую кожу.<br>
+            <strong>Шаг 2:</strong> Используйте вечером для лица, тела или локальных участков.<br>
+            <strong>Шаг 3:</strong> Почувствуйте эффект: увлажнение, восстановление и сияние кожи!
+        </p>
+    </div>
+
+     <!-- Ingredients -->
+    <div class="user-guide">
+        <h3>Состав:</h3>
+        <p>
+            • Масло Эму (98,35%)<br>
+            • Витамин Е<br>
+            • Масло лаванды узколистной<br>
+            • Феноксиэтанол<br>
+            • Этилгексилглицерин
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <div>
+                <a href="#"><img src="../images/icons/instagram-icon.png" alt="Instagram" class="social-icon"></a>
+                <a href="#"><img src="../images/icons/telegram-icon.png" alt="Telegram" class="social-icon"></a>
+                <a href="#"><img src="../images/icons/youtube-icon.png" alt="YouTube" class="social-icon"></a>
+                <p>Телефон: +998 90 356 01 00</p>
+            </div>
+        </div>
+        <p>&copy; 2025 Rhodex. Все права защищены.</p>
+    </footer>
+    
+    <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const body = document.body;
+
+    mobileMenuToggle.addEventListener('click', () => {
+        body.classList.toggle('mobile-menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenuToggle.contains(e.target) && 
+            !document.querySelector('nav').contains(e.target)) {
+            body.classList.remove('mobile-menu-open');
+        }
+    });
+    </script>
+</body>
+</html>

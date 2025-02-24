@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rehydro Skin Solution - Rhodex</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <!-- For Subpages -->
+    <header class="subpage-header">
+        <nav>
+            <a href="../index.html">Главная</a>
+            <a href="../brand-story.html">История бренда</a>
+            <a href="../gallery.html">Галерея</a>
+            <a href="../results.html">Результаты</a>
+        </nav>
+    </header>
+
+    <!-- Product Details -->
+    <div class="product-details">
+        <div class="product-image-container">
+            <img src="../images/products/product03.jpg" alt="Rehydro Skin Solution" class="product-image-large">
+        </div>
+        <div class="product-info">
+            <h2>Rehydro Skin Solution - Аэрозольный спрей</h2>
+            <p><strong>Описание:</strong> Специальный спрей-мист, передающий коже обильное увлажнение и питание с первых этапов ухода за кожей.</p>
+            <p><strong>Емкость и вес:</strong> 80 мл / 150 мл</p>
+        </div>
+    </div>
+
+    <!-- User Guide -->
+    <div class="user-guide">
+        <h3>Использование!</h3>
+        <p>
+            <strong>Шаг 1:</strong> Очищение кожи: Очистите кожу с помощью твердой пенки Luminar facial soap для максимальной подготовки.<br>
+            <strong>Шаг 2:</strong> Распыление: Распылите спрей на очищенную кожу с расстояния 20-30 см.<br>
+            <strong>Шаг 3:</strong> Применение: Используйте перед нанесением макияжа, после очищения или в течение дня.<br>
+            <strong>Шаг 4:</strong> Финализация: Не смывайте — дайте активным компонентам впитаться.
+        </p>
+    </div>
+
+     <!-- Ingredients -->
+    <div class="user-guide">
+        <h3>Состав:</h3>
+        <p>
+            • Гиалуроновая кислота<br>
+            • Пантенол<br>
+            • Экстракт огурца<br>
+            • Витамин E<br>
+            • Натуральные растительные экстракты
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="contact-info">
+            <div>
+                <a href="#"><img src="../images/icons/instagram-icon.png" alt="Instagram" class="social-icon"></a>
+                <a href="#"><img src="../images/icons/telegram-icon.png" alt="Telegram" class="social-icon"></a>
+                <a href="#"><img src="../images/icons/youtube-icon.png" alt="YouTube" class="social-icon"></a>
+                <p>Телефон: +998 90 356 01 00</p>
+            </div>
+        </div>
+        <p>&copy; 2025 Rhodex. Все права защищены.</p>
+    </footer>
+    
+    <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const body = document.body;
+
+    mobileMenuToggle.addEventListener('click', () => {
+        body.classList.toggle('mobile-menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenuToggle.contains(e.target) && 
+            !document.querySelector('nav').contains(e.target)) {
+            body.classList.remove('mobile-menu-open');
+        }
+    });
+    </script>
+</body>
+</html>
