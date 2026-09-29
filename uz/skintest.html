@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teri testi — Rhodex</title>
+<meta name="description" content="3 daqiqada teri turingizni aniqlang va Telegramda mutaxassisdan shaxsiy tavsiya oling.">
+<style>
+:root{
+  --plum:#5b4170;
+  --lilac:#efe9f4;
+  --orchid:#c8a2c8;
+  --cream:#f8f5ef;
+  --ink:#33293c;
+  --ink-soft:#6a6072;
+  --gold:#b89b6a;
+  --violet:#e2cbf6;
+  --rule:#d8cce2;
+  --white:#fff;
+  --sans:'Jost',-apple-system,'Segoe UI',sans-serif;
+  --serif:'Cormorant Garamond',Georgia,serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* ── shell ─────────────────────────────────────────── */
+
+.q-head{max-width:520px;margin:0 auto;padding:26px 20px 0;text-align:center}
+.q-head h1{font-family:var(--serif);font-size:28px;font-weight:500;margin:0;color:var(--plum);letter-spacing:.3px}
+.q-bar{height:2px;background:var(--rule);max-width:520px;margin:20px auto 0;position:relative}
+.q-bar span{position:absolute;left:0;top:0;height:100%;background:var(--gold);width:0;transition:width .45s cubic-bezier(.4,0,.2,1)}
+
+.wrap{max-width:520px;margin:0 auto;padding:22px 20px 72px}
+
+/* ── option cards ──────────────────────────────────── */
+.step-n{font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin-bottom:10px}
+.q-ask{font-family:var(--serif);font-size:24px;font-weight:500;line-height:1.3;margin:0 0 18px;color:var(--ink)}
+.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--white);border:1px solid var(--rule);border-radius:10px;padding:14px;margin-bottom:9px;cursor:pointer;font-family:var(--sans);font-size:16px;font-weight:400;line-height:1.4;color:var(--ink);transition:border-color .18s,background .18s}
+.opt:hover{border-color:var(--orchid);background:var(--lilac)}
+.opt:focus-visible{outline:2px solid var(--plum);outline-offset:2px}
+.opt.on{background:var(--lilac);border-color:var(--plum)}
+.opt img{width:54px;height:54px;flex-shrink:0;object-fit:contain;border-radius:8px;background:var(--cream)}
+.opt .lbl{flex:1}
+.tick{width:20px;height:20px;border-radius:4px;flex-shrink:0;border:1.5px solid var(--rule);background:var(--white);display:flex;align-items:center;justify-content:center}
+.opt.on .tick{border-color:var(--plum);background:var(--plum)}
+.tick svg{width:11px;height:11px;display:none}
+.opt.on .tick svg{display:block}
+
+.btn{display:block;width:100%;background:var(--plum);color:var(--white);border:none;border-radius:8px;padding:14px;font-family:var(--sans);font-size:17px;font-weight:500;letter-spacing:.3px;cursor:pointer;transition:background .18s}
+.btn:hover{background:#4a3460}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.btn-ghost{background:none;border:none;color:var(--ink-soft);font-family:var(--sans);font-size:15px;padding:8px 2px;cursor:pointer;margin-top:6px}
+.btn-ghost:hover{color:var(--plum)}
+.btn-line{display:block;width:100%;background:none;border:1px solid var(--rule);border-radius:8px;padding:12px;font-family:var(--sans);font-size:15px;color:var(--ink-soft);cursor:pointer}
+.btn-line:hover{border-color:var(--orchid);color:var(--plum)}
+.hint{font-size:14px;color:var(--ink-soft);text-align:center;margin:8px 0 0}
+
+/* ── result blocks ─────────────────────────────────── */
+.band{display:inline-block;background:var(--plum);color:var(--white);font-size:13px;letter-spacing:1.4px;text-transform:uppercase;font-weight:500;padding:5px 12px;border-radius:3px}
+.res-name{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--plum);margin:12px 0 2px;line-height:1.1}
+.res-sub{font-size:15px;color:var(--ink-soft);margin:0}
+.chip{display:inline-block;border:1px solid var(--plum);color:var(--plum);border-radius:20px;padding:5px 14px;font-size:13px;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;margin:10px 6px 0 0}
+.chip.soft{border-color:var(--rule);color:var(--ink-soft)}
+
+.sec{margin-top:30px}
+.sec-h{font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:var(--plum);font-weight:600;padding-bottom:7px;border-bottom:1px solid var(--gold);margin-bottom:14px}
+.card{background:var(--white);border:1px solid var(--rule);border-radius:10px;padding:16px;margin-bottom:10px}
+.card h3{font-family:var(--sans);font-size:16px;font-weight:600;margin:0 0 7px;color:var(--ink)}
+.card p{font-size:16px;color:var(--ink-soft);margin:0;line-height:1.65}
+.card p+p{margin-top:9px}
+
+/* axis */
+.axis{background:var(--white);border:1px solid var(--rule);border-radius:10px;padding:18px 16px 14px}
+.axis+.axis{margin-top:9px}
+.axis-lbl{display:flex;justify-content:space-between;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin-bottom:12px}
+.track{position:relative;height:3px;background:var(--lilac);border-radius:2px;margin:0 8px}
+.mark{position:absolute;top:50%;width:15px;height:15px;border-radius:50%;background:var(--plum);border:3px solid var(--white);box-shadow:0 0 0 1px var(--plum);transform:translate(-50%,-50%)}
+.mark.two{background:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.mark-cap{position:absolute;top:16px;font-size:12.5px;letter-spacing:.8px;color:var(--ink-soft);white-space:nowrap;transform:translateX(-50%)}
+.axis-note{font-size:14px;color:var(--ink-soft);margin:26px 0 0;line-height:1.5}
+
+/* protocol */
+.step{display:flex;gap:14px;background:var(--white);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;margin-bottom:9px}
+.step-i{font-family:var(--serif);font-size:23px;font-weight:600;color:var(--gold);line-height:1;padding-top:2px;min-width:20px}
+.step-b{flex:1}
+.step-b h4{font-family:var(--sans);font-size:16px;font-weight:600;margin:0 0 3px;color:var(--plum)}
+.step-b p{font-size:15px;color:var(--ink-soft);margin:0;line-height:1.55}
+.kfda{display:inline-block;font-size:12.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-top:5px}
+
+/* proof */
+.proof{background:var(--white);border:1px solid var(--rule);border-radius:10px;padding:16px}
+.proof{margin-bottom:12px}
+.proof-img{position:relative;margin-bottom:10px}
+.proof-img img{width:100%;height:auto;display:block;border-radius:8px}
+.pr-split{position:absolute;top:0;bottom:0;left:50%;width:3px;margin-left:-1.5px;background:#fff}
+.pr-ba{position:absolute;bottom:10px;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:#fff;background:rgba(43,34,51,.72);padding:4px 11px;border-radius:20px}
+.pr-ba.b{left:10px}.pr-ba.a{right:10px}
+.proof-all{display:inline-block;margin-top:12px;font-size:15px;color:var(--plum);text-decoration:none;border-bottom:1px solid var(--orchid);padding-bottom:2px}
+.p-link{color:var(--plum);text-decoration:none}
+.p-link:hover{text-decoration:underline}
+.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.proof-ph{aspect-ratio:3/4;background:var(--lilac);border-radius:6px;display:flex;align-items:flex-end;justify-content:center;padding:8px;font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--plum);font-weight:500}
+.proof-meta{font-size:14px;color:var(--ink-soft);margin:0;line-height:1.5}
+
+/* cta */
+.cta{background:var(--plum);border-radius:12px;padding:24px 20px;text-align:center;margin-top:30px}
+.cta h3{font-family:var(--serif);font-size:24px;font-weight:500;color:var(--white);margin:0 0 8px;line-height:1.25}
+.cta p{font-size:15px;color:var(--violet);margin:0 0 18px;line-height:1.6}
+.cta-btn{display:block;width:100%;text-align:center;text-decoration:none;box-sizing:border-box;background:var(--white);color:var(--plum);border:none;border-radius:8px;padding:14px;font-family:var(--sans);font-size:17px;font-weight:600;cursor:pointer}
+.cta-btn:hover{background:var(--lilac)}
+.cta-btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.cta-note{font-size:14px;color:var(--violet);margin:12px 0 0;line-height:1.5}
+.cta-copied{display:none;background:rgba(255,255,255,.12);border-radius:6px;padding:10px;font-size:14px;color:var(--white);margin-top:12px;line-height:1.5;text-align:left}
+
+.more{margin-top:24px;padding-top:20px;border-top:1px solid var(--rule)}
+.more a{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--ink);text-decoration:none;font-size:16px;padding:11px 0;border-bottom:1px solid var(--lilac)}
+.more a:hover{color:var(--plum)}
+.more a span:last-child{color:var(--orchid);font-size:18px}
+
+footer{background:var(--ink);color:var(--lilac);padding:26px 20px;text-align:center;font-size:14px;margin-top:40px}
+footer a{color:var(--violet);text-decoration:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<link rel="stylesheet" href="../css/site.css">
+<link rel="canonical" href="https://rhodex.uz/uz/skintest">
+<link rel="alternate" hreflang="uz" href="https://rhodex.uz/uz/skintest">
+<link rel="alternate" hreflang="ru" href="https://rhodex.uz/ru/skintest">
+<link rel="alternate" hreflang="x-default" href="https://rhodex.uz/uz/skintest">
+<script src="../js/track.js"></script>
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="../icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../icons/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png">
+<link rel="manifest" href="../icons/site.webmanifest">
+<meta name="theme-color" content="#5b4170">
+</head>
+<body>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1873816187313952&amp;ev=PageView&amp;noscript=1"></noscript>
+
+<header class="top">
+  <div class="top-in">
+    <a href="products" class="logo"><img src="../images/brand/logo-white.png" alt="Rhodex Cosmetics" width="122" height="38"></a>
+    <nav class="nav">
+      <a href="products">Mahsulotlar</a>
+      <a href="skintest" class="on">Teri testi</a>
+      <a href="../education/uz/">Bilim</a>
+      <a href="results">Natijalar</a>
+    </nav>
+    <div class="lang"><a href="skintest" class="on" hreflang="uz">UZ</a><a href="../ru/skintest" data-swap hreflang="ru">РУ</a></div>
+  </div>
+</header>
+</div>
+
+<div class="q-head"><h1 id="q-title"></h1></div>
+<div class="q-bar"><span id="q-fill"></span></div>
+
+<main class="wrap" id="q-body" aria-live="polite"></main>
+
+<footer>
+  <p style="margin:0 0 8px"><a href="https://t.me/rhodexuz">t.me/rhodexuz</a> &nbsp;·&nbsp; +998 90 356 01 00</p>
+  <p style="margin:0;opacity:.6">&copy; 2026 Rhodex Uzbekistan</p>
+  <p style="margin:6px 0 0;opacity:.5;font-size:12.5px">Sayt tahlil maqsadida cookie-fayllardan foydalanadi (Meta, Yandex).</p>
+</footer>
+
+<script src="../data/results.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   DIAGNOSIS MODEL — two independent axes
+   Axis 1 (sebum):      oily · combination · normal · dry
+   Axis 2 (sensitivity): 0–6 scale, scored separately
+   This mirrors the MOS KELADI product chips, where SEZGIR is a
+   parallel tag rather than an alternative to QURUQ / SUVSIZLANGAN.
+   ═══════════════════════════════════════════════════════════════════ */
+
+var lang = 'uz', step = 'intro', qi = 0, ans = {}, sens = null, concerns = [], out = null;
+
+/* Face illustrations — replace src with /../images/quiz/*.webp before launch.
+   Base64 was ~200 KB inline; external files halve first paint on 3G. */
+var FACE = {
+  oily:        '../images/quiz/oily.png',
+  dry:         '../images/quiz/dry.png',
+  combination: '../images/quiz/combination.png',
+  normal:      '../images/quiz/normal.png'
+};
+
+/* ── Questions: sebum axis only (3) ─────────────────────────────── */
+var QS = [
+  { id:'morning',
+    uz:"Ertalab uygʻonganingizda yuzingiz qanday?",
+    ru:"Какая у вас кожа утром после пробуждения?",
+    opts:[
+      {f:'oily',        uz:"Yogʻli va yaltiroq",                    ru:"Жирная и блестящая",                    s:[3,0,1,0]},
+      {f:'dry',         uz:"Quruq va tortishgan",                   ru:"Сухая и стянутая",                      s:[0,3,0,0]},
+      {f:'combination', uz:"T-zona yogʻli, yonoqlar quruq",         ru:"T-зона жирная, щёки сухие",             s:[0,0,3,0]},
+      {f:'normal',      uz:"Tiniq va qulay, oʻzgarishsiz",          ru:"Чистая и комфортная, без изменений",    s:[0,0,0,3]}
+    ]},
+  { id:'shine',
+    uz:"Kunning yarmida yaltirash qayerda paydo boʻladi?",
+    ru:"Где к середине дня появляется блеск?",
+    opts:[
+      {f:'oily',        uz:"Butun yuzda",                            ru:"По всему лицу",                        s:[3,0,0,0]},
+      {f:'dry',         uz:"Umuman yoʻq — teri quruq qoladi",        ru:"Совсем нет — кожа остаётся сухой",     s:[0,3,0,0]},
+      {f:'combination', uz:"Faqat peshona, burun va iyakda",         ru:"Только лоб, нос и подбородок",         s:[1,0,3,0]},
+      {f:'normal',      uz:"Yengil yaltirash, noqulayliksiz",        ru:"Лёгкий блеск, без дискомфорта",        s:[0,0,0,3]}
+    ]},
+  { id:'pores',
+    uz:"Poralar va teri teksturasi qanday?",
+    ru:"Какие у вас поры и текстура кожи?",
+    opts:[
+      {f:'oily',        uz:"Kengaygan, butun yuzda koʻrinadi",       ru:"Расширенные, заметны по всему лицу",   s:[3,0,1,0]},
+      {f:'dry',         uz:"Deyarli koʻrinmaydi, lekin qabiqlanish bor", ru:"Почти незаметны, но есть шелушение", s:[0,3,0,0]},
+      {f:'combination', uz:"Faqat burun va peshonada koʻrinadi",     ru:"Заметны только на носу и лбу",         s:[0,0,3,0]},
+      {f:'normal',      uz:"Mayda, teri silliq va tekis",            ru:"Мелкие, кожа гладкая и ровная",        s:[0,0,0,3]}
+    ]}
+];
+
+/* ── Sensitivity: scored on its own axis ────────────────────────── */
+var SENSQ = {
+  uz:"Yangi krem yoki ob-havo oʻzgarganda teringizga qanday taʼsir qiladi?",
+  ru:"Как ваша кожа реагирует на новый крем или смену погоды?",
+  opts:[
+    {uz:"Deyarli hech qanday reaksiya yoʻq",              ru:"Практически никак не реагирует",             v:0},
+    {uz:"Baʼzan yengil qizarish, tez oʻtib ketadi",        ru:"Иногда лёгкое покраснение, быстро проходит", v:2},
+    {uz:"Tez-tez qizaradi, achishadi yoki qichiydi",       ru:"Часто краснеет, печёт или зудит",            v:4},
+    {uz:"Koʻp mahsulotlar achishtiradi, qizarish uzoq turadi", ru:"Многие средства жгут, покраснение долго держится", v:6}
+  ]
+};
+
+/* ── Concerns ───────────────────────────────────────────────────── */
+var CONC = [
+  {v:'acne',        uz:"Toshmalar, ortiqcha yogʻlanish, qora nuqtalar", ru:"Высыпания, жирность, чёрные точки"},
+  {v:'dryness',     uz:"Quruqlik, tortishish, mayda ajinlar",           ru:"Сухость, стянутость, мелкие морщины"},
+  {v:'pigment',     uz:"Qoramtir dogʻlar, pigmentatsiya",               ru:"Тёмные пятна, пигментация"},
+  {v:'redness',     uz:"Qizarish va taʼsirchanlik",                     ru:"Покраснение и чувствительность"},
+  {v:'dull',        uz:"Xira koʻrinish, notekis teri rangi",            ru:"Тусклый цвет лица, неровный тон"},
+  {v:'wrinkles',    uz:"Ajinlar, taranglik yoʻqolishi",                 ru:"Морщины, потеря упругости"}
+];
+
+/* ── Skin types ─────────────────────────────────────────────────── */
+var TYPES = {
+  oily:{ uz:"Yogʻli teri", ru:"Жирная кожа", pos:84,
+    wUz:"Yogʻ bezlaringiz meʼyordan koʻproq sebum ishlab chiqaradi. Ortiqcha yogʻ oʻlik hujayralar bilan aralashib poralarni tiqadi — shundan toshmalar va qora nuqtalar paydo boʻladi. Ijobiy tomoni ham bor: yogʻli teri ajinlarga chidamliroq.",
+    wRu:"Ваши сальные железы вырабатывают больше себума, чем нужно. Избыток жира смешивается с отмершими клетками и забивает поры — отсюда высыпания и чёрные точки. Есть и плюс: жирная кожа устойчивее к морщинам." },
+  dry:{ uz:"Quruq teri", ru:"Сухая кожа", pos:16,
+    wUz:"Terining lipid bar'yeri zaiflashgan — namlik ushlab turilmay, tez bugʻlanib ketadi. Toshkentning quruq iqlimi va isitish mavsumi bu jarayonni tezlashtiradi. Shuning uchun quruq teriga faqat namlik emas, bar'yerni tiklovchi yogʻ komponentlari ham kerak.",
+    wRu:"Липидный барьер кожи ослаблен — влага не удерживается и быстро испаряется. Сухой климат Ташкента и отопительный сезон ускоряют этот процесс. Поэтому сухой коже нужна не только влага, но и липиды, восстанавливающие барьер." },
+  combination:{ uz:"Kombi teri", ru:"Комбинированная кожа", pos:null,
+    wUz:"T-zonada yogʻ bezlari zichroq joylashgan va faolroq ishlaydi, yonoqlarda esa ular kamroq. Natijada bitta yuzda ikki xil teri: burun va peshona yogʻli, yonoqlar quruq. Eng keng tarqalgan teri tipi — va eng koʻp xato qilinadigan tip, chunki koʻpchilik butun yuzga bir xil parvarish qoʻllaydi.",
+    wRu:"В T-зоне сальные железы расположены плотнее и работают активнее, на щеках их меньше. В итоге на одном лице два типа кожи: нос и лоб жирные, щёки сухие. Самый распространённый тип — и тип, с которым чаще всего ошибаются, применяя один и тот же уход ко всему лицу." },
+  normal:{ uz:"Normal teri", ru:"Нормальная кожа", pos:50,
+    wUz:"Yogʻ bezlari muvozanatda ishlaydi va bar'yer butun. Bu holatni saqlash muammoni tuzatishdan ancha oson — lekin 25 yoshdan keyin kollagen yiliga taxminan 1% kamayadi va teri asta-sekin quruqlashadi. Profilaktika hozir boshlanadi.",
+    wRu:"Сальные железы работают сбалансированно, барьер цел. Поддерживать это состояние гораздо проще, чем восстанавливать — но после 25 лет коллаген убывает примерно на 1% в год, и кожа постепенно становится суше. Профилактика начинается сейчас." }
+};
+
+var SENSTXT = {
+  0:{uz:"Bardoshli",     ru:"Устойчивая",         nUz:"Teringiz tashqi taʼsirlarga barqaror — parvarish tanlashda erkinroqsiz.", nRu:"Ваша кожа устойчива к внешним воздействиям — вы свободнее в выборе ухода."},
+  1:{uz:"Biroz sezgir",  ru:"Слегка чувствительная", nUz:"Baʼzan reaksiya beradi. Yangi mahsulotni bir hafta davomida bittadan qoʻshing.", nRu:"Иногда реагирует. Вводите новые средства по одному, с интервалом в неделю."},
+  2:{uz:"Sezgir",        ru:"Чувствительная",     nUz:"Bar'yer zaiflashgan. Parvarish tartibi qisqa boʻlishi va tinchlantiruvchi komponentlarga tayanishi kerak.", nRu:"Барьер ослаблен. Уход должен быть коротким и опираться на успокаивающие компоненты."}
+};
+
+/* ═══════════════════════════════════════════════════════════════════
+   PRODUCT PROTOCOL — DRAFT, PENDING SPECIALIST SIGN-OFF
+   Every mapping below is a first pass built from the product panels.
+   Do not publish before your product specialist and Koo Jin-seok have
+   reviewed it. Two products are deliberately excluded for now:
+     · Intensive Eye Contour Gel — pregnancy chip vs Retinyl Palmitate
+     · Any KFDA claim on Multi Protection Cream — Arbutin unconfirmed
+   ═══════════════════════════════════════════════════════════════════ */
+var BASE = {
+  oily:        ['clear','rehydro','lucent','mpc'],
+  dry:         ['luminar','rehydro','emugel','collagen'],
+  combination: ['clear','rehydro','lucent','mpc'],
+  normal:      ['luminar','rehydro','lucent','mpc']
+};
+var SENS_SWAP = { clear:'luminar', lucent:'nutritive' };
+var CONC_ADD = {
+  pigment:  'whitening',
+  dull:     'mask',
+  dryness:  'emugel',
+  wrinkles: 'collagen',
+  redness:  'emugel',
+  acne:     'clear'
+};
+
+/* Quiz key -> catalogue slug. The quiz names products; this is what
+   turns each one into a link to its real page instead of a dead end. */
+var P_SLUG = {
+  clear:'clear-gel', luminar:'luminar-facial-soap', rehydro:'rehydro-skin-solution',
+  whitening:'intensive-whitening-serum', emugel:'emu-gel', lucent:'lucent-complexion-cream',
+  nutritive:'nutritive-emu-cream', collagen:'moisture-collagen-cream',
+  mpc:'multi-protection-cream', mask:'white-mask'
+};
+var PROD_PAGE = 'product', RESULTS_PAGE = 'results';
+
+var P = {
+  clear:     {n:"Clear Gel",                 stepUz:"Tozalash",  stepRu:"Очищение",
+              uz:"Poralarni chuqur tozalaydi, terining tabiiy namligini saqlagan holda. Ertalab va kechqurun.",
+              ru:"Глубоко очищает поры, сохраняя естественную влагу кожи. Утром и вечером."},
+  luminar:   {n:"Luminar Facial Soap",       stepUz:"Tozalash",  stepRu:"Очищение",
+              uz:"88% fermentlangan oʻsimlik kompleksi — quritmasdan tozalaydi va bar'yerni mustahkamlaydi.",
+              ru:"88% ферментированный растительный комплекс — очищает не пересушивая и укрепляет барьер."},
+  rehydro:   {n:"Rehydro Skin Solution",     stepUz:"Toner",     stepRu:"Тонер",
+              uz:"Tozalashdan soʻng darhol seping — keyingi bosqichlar teriga yaxshiroq singadi.",
+              ru:"Распылите сразу после очищения — следующие средства впитаются лучше.", kfda:"Adenozin"},
+  whitening: {n:"Intensive Whitening Serum", stepUz:"Serum",     stepRu:"Сыворотка",
+              uz:"Notekis tonni yoritadi va dogʻlarni kamaytirishga yordam beradi. Tonerdan soʻng, 2–3 tomchi.",
+              ru:"Осветляет неровный тон и помогает уменьшить пятна. После тонера, 2–3 капли.", kfda:"Niatsinamid"},
+  emugel:    {n:"Emu Gel",                   stepUz:"Konsentrat", stepRu:"Концентрат",
+              uz:"98% sof Emu yogʻi — bar'yerni tiklaydi. 2–3 tomchi, yoki kremingizga qoʻshib.",
+              ru:"98% чистого масла Эму — восстанавливает барьер. 2–3 капли или добавьте в крем."},
+  lucent:    {n:"Lucent Complexion Cream",   stepUz:"Krem",      stepRu:"Крем",
+              uz:"Yengil tekstura, keramid kompleksi bilan. Pardoz ostida ham yaxshi turadi.",
+              ru:"Лёгкая текстура с керамидным комплексом. Хорошо держится под макияжем.", kfda:"Niatsinamid"},
+  nutritive: {n:"Nutritive Emu Cream",       stepUz:"Krem",      stepRu:"Крем",
+              uz:"6.99% Emu yogʻi va koreys oʻsimlik ekstraktlari — quruq va toliqqan teri uchun.",
+              ru:"6.99% масла Эму и корейские растительные экстракты — для сухой и уставшей кожи.", kfda:"Niatsinamid · Adenozin"},
+  collagen:  {n:"Moisture Collagen Cream",   stepUz:"Krem",      stepRu:"Крем",
+              uz:"Dengiz kollageni va gialuron kislotasi — taranglik va elastiklik uchun kechki bosqich.",
+              ru:"Морской коллаген и гиалуроновая кислота — вечерний этап для упругости."},
+  mpc:       {n:"Multi Protection Cream",    stepUz:"Quyoshdan himoya", stepRu:"Защита от солнца",
+              uz:"SPF50+ PA++++ — har kuni, hatto bulutli kunlarda ham. Parvarishning oxirgi bosqichi.",
+              ru:"SPF50+ PA++++ — каждый день, даже в пасмурную погоду. Финальный этап ухода."},
+  mask:      {n:"White Mask",                stepUz:"Haftalik",  stepRu:"Еженедельно",
+              uz:"Haftada 2–3 marta, 15–20 daqiqa — bir maskada butun ampula.",
+              ru:"2–3 раза в неделю, 15–20 минут — целая ампула в одной маске."}
+};
+
+/* ── UI copy ────────────────────────────────────────────────────── */
+var T = {
+  uz:{ title:"Teri testi", res:"Sizning natijangiz",
+    lead:"Teringizni qanchalik yaxshi bilasiz?",
+    sub:"4 ta savol — teri tipingiz, sezgirlik darajangiz va mutaxassisdan shaxsiy tavsiya.",
+    meta:"3 daqiqa · Bepul · Roʻyxatdan oʻtishsiz",
+    start:"Testni boshlash", back:"Orqaga", see:"Natijani koʻrish",
+    of:"savol", type:"Teri tipi", why:"Nima uchun shunday",
+    axis:"Teri koʻrsatkichlaringiz", proof:"Sizga oʻxshash holatlar: oldin va keyin",
+    plan:"Sizning 4 haftalik tartibingiz", morning:"Ertalab", evening:"Kechqurun",
+    concQ:"Qaysi muammolar sizga tanish?", concHint:"1–3 tasini tanlang, yoki oʻtkazib yuboring",
+    ctaT:"Shaxsiy tavsiyani Telegramda oling",
+    ctaD:"Tugmani bosing — natijangiz Telegramdagi xabarga avtomatik yoziladi. Mutaxassis uni koʻrib, teringizga mos mahsulotlar va tartibni shaxsan tanlab beradi. Bepul.",
+    ctaB:"Telegramda mutaxassisga yozish",
+    copied:"Natijangiz xabarga avtomatik yozildi — Telegramda faqat «Yuborish» tugmasini bosing. Agar xabar maydoni boʻsh boʻlsa, natija nusxalangan: maydonni uzoq bosib → Paste.", before:"Oldin", after:"Keyin",
+    more:"Batafsil oʻqish", again:"Testni qayta boshlash",
+    dry:"Quruq", oily:"Yogʻli", resist:"Bardoshli", sensi:"Sezgir",
+    tzone:"T-zona", cheek:"Yonoqlar", sensL:"Sezgirlik",
+    noProof:"Bu tip uchun suratlar tez orada qoʻshiladi.",
+    mon:"oy", allRes:"Barcha natijalarni koʻrish", proofNote:"Rhodex mijozlari. Natijalar shaxsiy xususiyatlar va parvarish muntazamligiga qarab farq qiladi.",
+    lA:"Teri bar'yeri nima va u qanday ishlaydi",
+    lB:"Nima uchun SPF pigmentatsiyaga qarshi asosiy vosita",
+    lC:"Barcha mahsulotlarni koʻrish" },
+  ru:{ title:"Тест кожи", res:"Ваш результат",
+    lead:"Насколько хорошо вы знаете свою кожу?",
+    sub:"4 вопроса — тип кожи, уровень чувствительности и персональная консультация специалиста.",
+    meta:"3 минуты · Бесплатно · Без регистрации",
+    start:"Начать тест", back:"Назад", see:"Показать результат",
+    of:"вопрос", type:"Тип кожи", why:"Почему так происходит",
+    axis:"Ваши показатели", proof:"Похожие случаи: до и после",
+    plan:"Ваш уход на 4 недели", morning:"Утром", evening:"Вечером",
+    concQ:"Какие проблемы вам знакомы?", concHint:"Выберите 1–3 или пропустите",
+    ctaT:"Получите персональный совет в Telegram",
+    ctaD:"Нажмите кнопку — результат автоматически впишется в сообщение в Telegram. Специалист подберёт средства и схему ухода лично для вашей кожи. Бесплатно.",
+    ctaB:"Написать специалисту в Telegram",
+    copied:"Результат уже вписан в сообщение — в Telegram просто нажмите «Отправить». Если поле пустое, результат скопирован: долгое нажатие → Вставить.", before:"До", after:"После",
+    more:"Читать дальше", again:"Пройти тест заново",
+    dry:"Сухая", oily:"Жирная", resist:"Устойчивая", sensi:"Чувствительная",
+    tzone:"T-зона", cheek:"Щёки", sensL:"Чувствительность",
+    noProof:"Фотографии для этого типа скоро появятся.",
+    mon:"мес.", allRes:"Смотреть все результаты", proofNote:"Клиенты Rhodex. Результаты индивидуальны и зависят от регулярности ухода.",
+    lA:"Что такое барьер кожи и как он работает",
+    lB:"Почему SPF — главное средство против пигментации",
+    lC:"Посмотреть все продукты" }
+};
+function t(k){ return T[lang][k] || k; }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+/* ── Render ─────────────────────────────────────────────────────── */
+function render(){
+  var body = document.getElementById('q-body');
+  document.getElementById('q-title').textContent = step === 'results' ? t('res') : t('title');
+
+  var total = QS.length + 2;                 // 3 sebum + 1 sensitivity + concerns
+  var done  = step === 'intro' ? 0
+            : step === 'questions' ? qi + 1
+            : step === 'sens' ? QS.length + 1
+            : step === 'concerns' ? total
+            : total;
+  document.getElementById('q-fill').style.width = (done / total * 100) + '%';
+
+  var h = '';
+
+  if (step === 'intro') {
+    var pr = (typeof liveResults === 'function') ? liveResults().slice(0, 3) : [];
+    h = '<div class="qi">'
+      + '<div class="qi-faces"><figure><img src="../images/quiz/oily.webp" alt="" width="216" height="216"><figcaption>Yogʻli</figcaption></figure><figure><img src="../images/quiz/dry.webp" alt="" width="216" height="216"><figcaption>Quruq</figcaption></figure><figure><img src="../images/quiz/combination.webp" alt="" width="216" height="216"><figcaption>Kombi</figcaption></figure><figure><img src="../images/quiz/normal.webp" alt="" width="216" height="216"><figcaption>Normal</figcaption></figure></div>'
+      + '<p class="step-n" style="margin:22px 0 10px;text-align:center">' + t('meta') + '</p>'
+      + '<h2 class="qi-h">' + t('lead') + '</h2>'
+      + '<p class="qi-get">Test natijasida bilib olasiz:</p><ul class="qi-list"><li>Teri turingiz — yogʻli, quruq, kombi yoki normal</li><li>Sezgirlik darajangiz va asosiy muammolaringiz</li><li>Mutaxassisdan Telegramda bepul shaxsiy tavsiya</li></ul>'
+      + '<button class="btn qi-btn" onclick="go(\'questions\')">' + t('start') + ' →</button>'
+      + (pr.length ? '<div class="qi-proof"><div class="qi-ph"><span>Mijozlarimiz natijalari</span><a href="' + RESULTS_PAGE + '">Barchasi →</a></div><div class="qi-pics">'
+          + pr.map(function(r){ return '<a href="' + RESULTS_PAGE + '"><img src="' + r.image + '" alt="" loading="lazy"><b>' + durationLabel(r, lang) + '</b></a>'; }).join('')
+          + '</div></div>' : '')
+      + '</div>';
+  }
+
+  else if (step === 'questions') {
+    var q = QS[qi];
+    h = '<p class="step-n">' + (qi + 1) + ' / ' + total + ' ' + t('of') + '</p>'
+      + '<h2 class="q-ask">' + q[lang] + '</h2>';
+    q.opts.forEach(function(o, i){
+      h += '<button type="button" class="opt" onclick="pick(' + qi + ',' + i + ')">'
+        + '<img src="' + FACE[o.f] + '" alt="" loading="lazy">'
+        + '<span class="lbl">' + o[lang] + '</span></button>';
+    });
+    if (qi > 0) h += '<button class="btn-ghost" onclick="qi--;render()">' + t('back') + '</button>';
+  }
+
+  else if (step === 'sens') {
+    h = '<p class="step-n">' + (QS.length + 1) + ' / ' + total + ' ' + t('of') + '</p>'
+      + '<h2 class="q-ask">' + SENSQ[lang] + '</h2>';
+    SENSQ.opts.forEach(function(o, i){
+      h += '<button type="button" class="opt" onclick="pickSens(' + o.v + ')">'
+        + '<span class="lbl">' + o[lang] + '</span></button>';
+    });
+    h += '<button class="btn-ghost" onclick="step=\'questions\';qi=QS.length-1;render()">' + t('back') + '</button>';
+  }
+
+  else if (step === 'concerns') {
+    h = '<p class="step-n">' + total + ' / ' + total + ' ' + t('of') + '</p>'
+      + '<h2 class="q-ask">' + t('concQ') + '</h2>';
+    CONC.forEach(function(o){
+      var on = concerns.indexOf(o.v) > -1;
+      h += '<button type="button" class="opt' + (on ? ' on' : '') + '" aria-pressed="' + on + '" onclick="toggle(\'' + o.v + '\')">'
+        + '<span class="lbl">' + o[lang] + '</span>'
+        + '<span class="tick"><svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 6.2 4.4 9.2 10.5 2.8"/></svg></span></button>';
+    });
+    h += '<button class="btn" style="margin-top:16px" onclick="finish()">' + t('see') + '</button>'
+      +  '<p class="hint">' + t('concHint') + '</p>';
+  }
+
+  else if (step === 'results' && out) {
+    h = renderResult();
+  }
+
+  body.innerHTML = h;
+  if (step !== 'intro') window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+/* ── Result page — block order fixed:
+   result → axes → why → proof → protocol → CTA → read more ────── */
+function renderResult(){
+  var ty = TYPES[out.type], sl = SENSTXT[out.sensLevel];
+  var h = '';
+
+  /* 1 · diagnosis */
+  h += '<div style="text-align:center;padding-top:6px">'
+    +  '<span class="band">' + t('type') + '</span>'
+    +  '<h2 class="res-name">' + ty[lang] + '</h2>'
+    +  '<p class="res-sub">' + sl[lang] + '</p>'
+    +  '<div>';
+  out.chips.forEach(function(c){ h += '<span class="chip">' + c + '</span>'; });
+  h += '</div></div>';
+
+  /* 2 · axes */
+  h += '<div class="sec"><div class="sec-h">' + t('axis') + '</div>';
+  h += '<div class="axis"><div class="axis-lbl"><span>' + t('dry') + '</span><span>' + t('oily') + '</span></div><div class="track">';
+  if (out.type === 'combination') {
+    h += '<div class="mark" style="left:28%"></div><div class="mark-cap" style="left:28%">' + t('cheek') + '</div>'
+      +  '<div class="mark two" style="left:80%"></div><div class="mark-cap" style="left:80%">' + t('tzone') + '</div>';
+  } else {
+    h += '<div class="mark" style="left:' + ty.pos + '%"></div>';
+  }
+  h += '</div><p class="axis-note">' + (out.type === 'combination'
+      ? (lang === 'ru' ? 'Две зоны — два режима ухода. Это и есть комбинированная кожа.'
+                       : 'Ikki zona — ikki xil parvarish. Kombi terining maʼnosi shu.')
+      : '') + '</p></div>';
+
+  h += '<div class="axis"><div class="axis-lbl"><span>' + t('resist') + '</span><span>' + t('sensi') + '</span></div>'
+    +  '<div class="track"><div class="mark" style="left:' + (8 + out.sensRaw / 6 * 84) + '%"></div></div>'
+    +  '<p class="axis-note">' + sl['n' + (lang === 'ru' ? 'Ru' : 'Uz')] + '</p></div></div>';
+
+  /* 3 · why */
+  h += '<div class="sec"><div class="sec-h">' + t('why') + '</div>'
+    +  '<div class="card"><p>' + ty['w' + (lang === 'ru' ? 'Ru' : 'Uz')] + '</p></div></div>';
+
+  /* 4 · proof — before/after matched to this result; hidden if none */
+  var rs = matchResults();
+  if (rs.length) {
+    h += '<div class="sec"><div class="sec-h">' + t('proof') + '</div>';
+    rs.forEach(function(r){
+      h += '<div class="proof"><div class="proof-img"><img src="' + r.image + '" alt="' + t('before') + ' / ' + t('after') + '" width="1200" height="900" loading="lazy">'
+        +  (r.layout === 'pair' ? '<span class="pr-split"></span>' : '')
+        +  '<span class="pr-ba b">' + t('before') + '</span><span class="pr-ba a">' + t('after') + '</span></div>'
+        +  '<p class="proof-meta"><b>' + durationLabel(r, lang) + '</b> · ' + ((r.note && r.note[lang]) || '') + '</p></div>';
+    });
+    h += '<p class="proof-meta" style="margin-top:6px">' + t('proofNote') + '</p>'
+      +  '<a class="proof-all" href="' + RESULTS_PAGE + '">' + t('allRes') + ' &rsaquo;</a></div>';
+  }
+
+  /* 6 · CTA */
+  h += '<div class="cta"><h3>' + t('ctaT') + '</h3><p>' + t('ctaD') + '</p>'
+    +  '<a class="cta-btn" id="tgBtn" href="' + tgLink() + '" target="_blank" rel="noopener" onclick="toSpecialist()">' + t('ctaB') + '</a>'
+    +  '<div class="cta-copied" id="copied">' + t('copied') + '</div>'
+    +  '<p class="cta-note">t.me/rhodexuz</p></div>';
+
+  /* 7 · read more — below the CTA on purpose */
+  h += '<div class="more">'
+    +  '<a href="../education/uz/skin-barrier"><span>' + t('lA') + '</span><span>&rsaquo;</span></a>'
+    +  '<a href="../education/uz/sun-protection"><span>' + t('lB') + '</span><span>&rsaquo;</span></a>'
+    +  '<a href="products"><span>' + t('lC') + '</span><span>&rsaquo;</span></a>'
+    +  '</div>'
+    +  '<button class="btn-line" style="margin-top:16px" onclick="reset()">' + t('again') + '</button>';
+
+  return h;
+}
+
+/* ── Actions ────────────────────────────────────────────────────── */
+function go(s){
+  if (s === 'questions' && step === 'intro' && window.rxTrack) rxTrack('QuizStart', { lang: lang });
+  step = s; render();
+}
+
+function pick(i, oi){
+  ans[QS[i].id] = QS[i].opts[oi].s;
+  if (i < QS.length - 1) { qi++; } else { step = 'sens'; }
+  render();
+}
+function pickSens(v){ sens = v; step = 'concerns'; render(); }
+
+function toggle(v){
+  var i = concerns.indexOf(v);
+  if (i > -1) concerns.splice(i, 1);
+  else if (concerns.length < 3) concerns.push(v);
+  render();
+}
+
+function finish(){
+  var sc = [0,0,0,0], keys = ['oily','dry','combination','normal'];
+  Object.keys(ans).forEach(function(k){
+    for (var i = 0; i < 4; i++) sc[i] += ans[k][i];
+  });
+  var max = Math.max.apply(null, sc);
+  // Tiebreak: combination > oily > dry > normal.
+  // Combination first because mixed signals most often mean mixed skin.
+  var order = [2,0,1,3], win = 3;
+  for (var j = 0; j < order.length; j++) { if (sc[order[j]] === max) { win = order[j]; break; } }
+  var type = keys[win];
+
+  var raw = sens == null ? 0 : sens;
+  var lvl = raw <= 1 ? 0 : (raw <= 3 ? 1 : 2);
+
+  // Protocol: base stack, swapped for sensitivity, plus one concern-led addition
+  var plan = BASE[type].slice();
+  if (lvl === 2) plan = plan.map(function(k){ return SENS_SWAP[k] || k; });
+  concerns.forEach(function(c){
+    var add = CONC_ADD[c];
+    if (add && plan.indexOf(add) === -1 && plan.length < 5) plan.push(add);
+  });
+
+  // Chips mirror the MOS KELADI product tags
+  var chips = [];
+  if (lvl === 2) chips.push(lang === 'ru' ? 'Чувствительная' : 'Sezgir');
+  if (type === 'dry' || concerns.indexOf('dryness') > -1) chips.push(lang === 'ru' ? 'Обезвоженная' : 'Suvsizlangan');
+  if (concerns.indexOf('pigment') > -1) chips.push(lang === 'ru' ? 'Неровный тон' : 'Notekis ton');
+  if (concerns.indexOf('acne') > -1) chips.push(lang === 'ru' ? 'Склонная к высыпаниям' : 'Toshmaga moyil');
+  if (concerns.indexOf('redness') > -1) chips.push(lang === 'ru' ? 'Склонная к покраснению' : 'Qizarishga moyil');
+
+  out = { type:type, sensRaw:raw, sensLevel:lvl, concerns:concerns.slice(), plan:plan, chips:chips };
+  step = 'results';
+  writeUrl();
+  if (window.rxTrack) rxTrack('QuizComplete', { skin_type: type, sensitivity: lvl, concerns: concerns.join(',') || 'none', lang: lang });
+  render();
+}
+
+function reset(){
+  step = 'intro'; qi = 0; ans = {}; sens = null; concerns = []; out = null;
+  history.replaceState(null, '', location.pathname);
+  render();
+}
+
+/* ── Shareable result URL ───────────────────────────────────────
+   ?r=combination-2-acne.dull  — readable, and the same string can
+   become a real path (/uz/teri/aralash-sezgir/) once the site has
+   server-side routing. Until then this keeps results linkable. */
+function writeUrl(){
+  var s = out.type + '-' + out.sensLevel + (out.concerns.length ? '-' + out.concerns.join('.') : '');
+  history.replaceState(null, '', location.pathname + '?r=' + s);
+}
+function readUrl(){
+  var m = /[?&]r=([^&]+)/.exec(location.search);
+  if (!m) return false;
+  var p = decodeURIComponent(m[1]).split('-');
+  if (!TYPES[p[0]]) return false;
+  var lvl = Math.min(2, Math.max(0, parseInt(p[1], 10) || 0));
+  concerns = p[2] ? p[2].split('.').filter(function(c){ return CONC_ADD[c]; }).slice(0, 3) : [];
+  sens = lvl === 0 ? 0 : (lvl === 1 ? 2 : 5);
+  var plan = BASE[p[0]].slice();
+  if (lvl === 2) plan = plan.map(function(k){ return SENS_SWAP[k] || k; });
+  concerns.forEach(function(c){
+    var a = CONC_ADD[c];
+    if (a && plan.indexOf(a) === -1 && plan.length < 5) plan.push(a);
+  });
+  out = { type:p[0], sensRaw:sens, sensLevel:lvl, concerns:concerns.slice(), plan:plan, chips:[] };
+  step = 'results';
+  return true;
+}
+
+/* ── Telegram handoff ───────────────────────────────────────────
+   t.me/<username>?text=… opens the chat with the result already typed in
+   the message box (current Telegram apps, core.telegram.org/api/links).
+   The visitor only presses Send — a message can never be sent without
+   that tap. The text is also copied as a fallback for old app versions. */
+var TG_USER = 'rhodexuz';
+function tgLink(){
+  return 'https://t.me/' + TG_USER + '?text=' + encodeURIComponent(resultText());
+}
+function resultText(){
+  var ty = TYPES[out.type], sl = SENSTXT[out.sensLevel];
+  var L = lang === 'ru'
+    ? {h:'Результат теста кожи Rhodex', ty:'Тип кожи', se:'Чувствительность', co:'Беспокоит', no:'не выбрано',
+       ask:'Хочу разобрать результат и подобрать уход.'}
+    : {h:'Rhodex teri testi natijasi', ty:'Teri tipi', se:'Sezgirlik', co:'Muammolar', no:'tanlanmagan',
+       ask:'Natijani koʻrib chiqib, menga mos parvarishni tanlashda yordam bering.'};
+  var cl = out.concerns.length
+    ? out.concerns.map(function(v){
+        var c = CONC.filter(function(x){ return x.v === v; })[0];
+        return c ? '• ' + c[lang] : '';
+      }).filter(Boolean).join('\n')
+    : L.no;
+  var link = 'https://rhodex.uz' + location.pathname.replace(/^.*\/(uz|ru)\//, '/$1/') + location.search;
+  return L.h + '\n\n' + L.ty + ': ' + ty[lang] + '\n' + L.se + ': ' + sl[lang]
+       + '\n\n' + L.co + ':\n' + cl + '\n\n' + L.ask + '\n\n' + link;
+}
+
+function copyText(s){
+  if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(s);
+  return new Promise(function(res, rej){
+    var a = document.createElement('textarea');
+    a.value = s; a.setAttribute('readonly',''); a.style.position = 'fixed'; a.style.opacity = '0';
+    document.body.appendChild(a); a.select();
+    try { document.execCommand('copy') ? res() : rej(); } catch(e){ rej(e); }
+    document.body.removeChild(a);
+  });
+}
+
+function toSpecialist(){
+  // The link itself opens Telegram (a real <a>, so mobile browsers never block it).
+  copyText(resultText()).catch(function(){});
+  var n = document.getElementById('copied');
+  if (n) n.style.display = 'block';
+}
+
+/* Quiz answers -> the concern ids used in results.js / products.js */
+var RES_MAP = {
+  acne:['blemish-prone','congested'], dryness:['dehydrated'], pigment:['uneven-tone'],
+  redness:['redness-prone'], dull:['dull','uneven-tone'], wrinkles:['wrinkles','loss-of-firmness','mature']
+};
+var TYPE_MAP = { oily:['blemish-prone','congested'], combination:['congested'], dry:['dehydrated'], normal:[] };
+function matchResults(){
+  if (typeof resultsForConcerns !== 'function' || !out) return [];
+  var want = [];
+  out.concerns.forEach(function(c){ (RES_MAP[c] || []).forEach(function(x){ if (want.indexOf(x) < 0) want.push(x); }); });
+  (TYPE_MAP[out.type] || []).forEach(function(x){ if (want.indexOf(x) < 0) want.push(x); });
+  if (!want.length) return [];
+  return resultsForConcerns(want).slice(0, 2);
+}
+
+/* ── Boot ───────────────────────────────────────────────────────── */
+(function init(){
+  document.documentElement.lang = lang;
+/* Carry ?p= / ?cat= / ?tag= / ?r= across the language switch, so a filtered
+   grid or a quiz result stays intact when the visitor changes language. */
+document.querySelectorAll('[data-swap]').forEach(function(a){
+  a.href = a.getAttribute('href') + location.search;
+});
+try { localStorage.setItem('rhodex-lang', document.documentElement.lang); } catch(e){}
+  readUrl();
+  render();
+})();
+</script>
+</body>
+</html>
