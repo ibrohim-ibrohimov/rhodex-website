@@ -84,10 +84,10 @@ footer a{color:var(--violet);text-decoration:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <link rel="stylesheet" href="../css/site.css">
-<link rel="canonical" href="https://rhodex.uz/ru/produkt.html">
-<link rel="alternate" hreflang="uz" href="https://rhodex.uz/uz/produkt.html">
-<link rel="alternate" hreflang="ru" href="https://rhodex.uz/ru/produkt.html">
-<link rel="alternate" hreflang="x-default" href="https://rhodex.uz/uz/produkt.html">
+<link rel="canonical" href="https://rhodex.uz/ru/produkt">
+<link rel="alternate" hreflang="uz" href="https://rhodex.uz/uz/produkt">
+<link rel="alternate" hreflang="ru" href="https://rhodex.uz/ru/produkt">
+<link rel="alternate" hreflang="x-default" href="https://rhodex.uz/uz/produkt">
 <script src="../js/track.js"></script>
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
@@ -101,14 +101,14 @@ footer a{color:var(--violet);text-decoration:none}
 
 <header class="top">
   <div class="top-in">
-    <a href="produkty.html" class="logo">Rhodex</a>
+    <a href="produkty" class="logo">Rhodex</a>
     <nav class="nav">
-      <a href="produkty.html" data-nav="prods">Продукты</a>
-      <a href="test-kozhi.html" data-nav="quiz">Тест кожи</a>
-      <a href="../education/ru/index.html" data-nav="edu">Знания</a>
-      <a href="rezultaty.html" data-nav="res">Результаты</a>
+      <a href="produkty" data-nav="prods">Продукты</a>
+      <a href="test-kozhi" data-nav="quiz">Тест кожи</a>
+      <a href="../education/ru/" data-nav="edu">Знания</a>
+      <a href="rezultaty" data-nav="res">Результаты</a>
     </nav>
-    <div class="lang"><a href="../uz/mahsulot.html" data-swap hreflang="uz">UZ</a><a href="produkt.html" class="on" hreflang="ru">РУ</a></div>
+    <div class="lang"><a href="../uz/mahsulot" data-swap hreflang="uz">UZ</a><a href="produkt" class="on" hreflang="ru">РУ</a></div>
   </div>
 </header>
 
@@ -127,8 +127,8 @@ footer a{color:var(--violet);text-decoration:none}
 
 const lang = 'ru';
 const slug = new URLSearchParams(location.search).get('p');
-const RES_PAGE = 'rezultaty.html';
-const GRID = 'produkty.html';
+const RES_PAGE = 'rezultaty';
+const GRID = 'produkty';
 
 const T = {
   uz:{ home:"Bosh sahifa", prods:"Mahsulotlar", bens:"Foydali xususiyatlari",
@@ -153,7 +153,7 @@ function draw(){
   if (!p || !p.published){
     document.getElementById('crumb').innerHTML = '';
     document.getElementById('main').innerHTML =
-      `<div class="miss"><p>${t('miss')}</p><a class="chip" href="produkty.html">${t('back')}</a></div>`;
+      `<div class="miss"><p>${t('miss')}</p><a class="chip" href="produkty">${t('back')}</a></div>`;
     return;
   }
   if (!window.__rxVC && window.rxTrack) { window.__rxVC = 1; rxTrack('ViewContent', { content_ids:[p.slug], content_type:'product', content_name:p.name }); }
@@ -161,8 +161,8 @@ function draw(){
   const cat = CATEGORIES.find(c => c.id === p.category);
   document.title = `${p.name} — Rhodex Uzbekistan`;
   document.getElementById('crumb').innerHTML =
-    `<a href="produkty.html">${t('prods')}</a>
-     &rsaquo; <a href="produkty.html?cat=${p.category}">${L(cat)}</a> &rsaquo; ${p.name}`;
+    `<a href="produkty">${t('prods')}</a>
+     &rsaquo; <a href="produkty?cat=${p.category}">${L(cat)}</a> &rsaquo; ${p.name}`;
 
   /* KFDA gold line renders only from the confirmed actives array.
      An empty array renders nothing — never a placeholder, never inferred. */
@@ -198,7 +198,7 @@ function draw(){
   const rel = live().filter(x => x.category === p.category && x.slug !== p.slug).slice(0, 3);
   const relBlock = rel.length ? `
     <section class="sec"><div class="sec-h">${t('rel')}</div><div class="rel">` +
-    rel.map(x => `<a class="rc" href="produkt.html?p=${x.slug}">
+    rel.map(x => `<a class="rc" href="produkt?p=${x.slug}">
       <p class="n">${x.name}</p><p class="s">${L(x.subtitle)} &middot; ${x.volume}</p></a>`).join('') +
     `</div></section>` : '';
 

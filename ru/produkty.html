@@ -78,10 +78,10 @@ footer a{color:var(--violet);text-decoration:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <link rel="stylesheet" href="../css/site.css">
-<link rel="canonical" href="https://rhodex.uz/ru/produkty.html">
-<link rel="alternate" hreflang="uz" href="https://rhodex.uz/uz/produkty.html">
-<link rel="alternate" hreflang="ru" href="https://rhodex.uz/ru/produkty.html">
-<link rel="alternate" hreflang="x-default" href="https://rhodex.uz/uz/produkty.html">
+<link rel="canonical" href="https://rhodex.uz/ru/produkty">
+<link rel="alternate" hreflang="uz" href="https://rhodex.uz/uz/produkty">
+<link rel="alternate" hreflang="ru" href="https://rhodex.uz/ru/produkty">
+<link rel="alternate" hreflang="x-default" href="https://rhodex.uz/uz/produkty">
 <script src="../js/track.js"></script>
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
@@ -95,14 +95,14 @@ footer a{color:var(--violet);text-decoration:none}
 
 <header class="top">
   <div class="top-in">
-    <a href="produkty.html" class="logo">Rhodex</a>
+    <a href="produkty" class="logo">Rhodex</a>
     <nav class="nav">
-      <a href="produkty.html" class="on" data-nav="prods">Продукты</a>
-      <a href="test-kozhi.html" data-nav="quiz">Тест кожи</a>
-      <a href="../education/ru/index.html" data-nav="edu">Знания</a>
-      <a href="rezultaty.html" data-nav="res">Результаты</a>
+      <a href="produkty" class="on" data-nav="prods">Продукты</a>
+      <a href="test-kozhi" data-nav="quiz">Тест кожи</a>
+      <a href="../education/ru/" data-nav="edu">Знания</a>
+      <a href="rezultaty" data-nav="res">Результаты</a>
     </nav>
-    <div class="lang"><a href="../uz/mahsulotlar.html" data-swap hreflang="uz">UZ</a><a href="produkty.html" class="on" hreflang="ru">РУ</a></div>
+    <div class="lang"><a href="../uz/mahsulotlar" data-swap hreflang="uz">UZ</a><a href="produkty" class="on" hreflang="ru">РУ</a></div>
   </div>
 </header>
 
@@ -120,7 +120,7 @@ footer a{color:var(--violet);text-decoration:none}
 <div class="count"><p id="countTxt"></p><button class="clear" id="clearBtn" onclick="clearAll()" hidden></button></div>
 <main class="grid" id="grid"></main>
 <div class="home-strip">
-  <a class="qcta" href="test-kozhi.html"><div><b>Какой продукт подходит вам?</b><span>3-минутный тест определит тип кожи, а специалист в Telegram даст персональный совет. Бесплатно.</span></div><i>Пройти тест →</i></a>
+  <a class="qcta" href="test-kozhi"><div><b>Какой продукт подходит вам?</b><span>3-минутный тест определит тип кожи, а специалист в Telegram даст персональный совет. Бесплатно.</span></div><i>Пройти тест →</i></a>
 </div>
 
 <footer>
@@ -236,7 +236,7 @@ function drawGrid(){
     const gold = p.kfda.length ? `<span class="gold-tag">KFDA</span>` : '';
     const safe = '';   // pregnancy chip lives on the detail page only
     const spf = p.spf ? `<span class="cspf">${p.spf}</span>` : '<span></span>';
-    return `<a class="card" href="produkt.html?p=${p.slug}">
+    return `<a class="card" href="produkt?p=${p.slug}">
       <div class="shot">${gold}<img src="${p.image}" alt="${p.name}" loading="lazy"
         onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ph',textContent:'R'}))"></div>
       <div class="cbody">

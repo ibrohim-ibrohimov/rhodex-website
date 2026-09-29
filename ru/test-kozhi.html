@@ -124,10 +124,10 @@ footer a{color:var(--violet);text-decoration:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <link rel="stylesheet" href="../css/site.css">
-<link rel="canonical" href="https://rhodex.uz/ru/test-kozhi.html">
-<link rel="alternate" hreflang="uz" href="https://rhodex.uz/uz/teri-testi.html">
-<link rel="alternate" hreflang="ru" href="https://rhodex.uz/ru/test-kozhi.html">
-<link rel="alternate" hreflang="x-default" href="https://rhodex.uz/uz/teri-testi.html">
+<link rel="canonical" href="https://rhodex.uz/ru/test-kozhi">
+<link rel="alternate" hreflang="uz" href="https://rhodex.uz/uz/teri-testi">
+<link rel="alternate" hreflang="ru" href="https://rhodex.uz/ru/test-kozhi">
+<link rel="alternate" hreflang="x-default" href="https://rhodex.uz/uz/teri-testi">
 <script src="../js/track.js"></script>
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
@@ -141,14 +141,14 @@ footer a{color:var(--violet);text-decoration:none}
 
 <header class="top">
   <div class="top-in">
-    <a href="produkty.html" class="logo">Rhodex</a>
+    <a href="produkty" class="logo">Rhodex</a>
     <nav class="nav">
-      <a href="produkty.html">Продукты</a>
-      <a href="test-kozhi.html" class="on">Тест кожи</a>
-      <a href="../education/ru/index.html">Знания</a>
-      <a href="rezultaty.html">Результаты</a>
+      <a href="produkty">Продукты</a>
+      <a href="test-kozhi" class="on">Тест кожи</a>
+      <a href="../education/ru/">Знания</a>
+      <a href="rezultaty">Результаты</a>
     </nav>
-    <div class="lang"><a href="../uz/teri-testi.html" data-swap hreflang="uz">UZ</a><a href="test-kozhi.html" class="on" hreflang="ru">РУ</a></div>
+    <div class="lang"><a href="../uz/teri-testi" data-swap hreflang="uz">UZ</a><a href="test-kozhi" class="on" hreflang="ru">РУ</a></div>
   </div>
 </header>
 </div>
@@ -292,7 +292,7 @@ var P_SLUG = {
   nutritive:'nutritive-emu-cream', collagen:'moisture-collagen-cream',
   mpc:'multi-protection-cream', mask:'white-mask'
 };
-var PROD_PAGE = 'produkt.html', RESULTS_PAGE = 'rezultaty.html';
+var PROD_PAGE = 'produkt', RESULTS_PAGE = 'rezultaty';
 
 var P = {
   clear:     {n:"Clear Gel",                 stepUz:"Tozalash",  stepRu:"Очищение",
@@ -500,9 +500,9 @@ function renderResult(){
 
   /* 7 · read more — below the CTA on purpose */
   h += '<div class="more">'
-    +  '<a href="../education/ru/barer-kozhi.html"><span>' + t('lA') + '</span><span>&rsaquo;</span></a>'
-    +  '<a href="../education/ru/solnce-i-zashita.html"><span>' + t('lB') + '</span><span>&rsaquo;</span></a>'
-    +  '<a href="produkty.html"><span>' + t('lC') + '</span><span>&rsaquo;</span></a>'
+    +  '<a href="../education/ru/barer-kozhi"><span>' + t('lA') + '</span><span>&rsaquo;</span></a>'
+    +  '<a href="../education/ru/solnce-i-zashita"><span>' + t('lB') + '</span><span>&rsaquo;</span></a>'
+    +  '<a href="produkty"><span>' + t('lC') + '</span><span>&rsaquo;</span></a>'
     +  '</div>'
     +  '<button class="btn-line" style="margin-top:16px" onclick="reset()">' + t('again') + '</button>';
 

@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════════════
    RHODEX UZBEKISTAN — BEFORE / AFTER RESULTS
    Single source of truth. Feeds three surfaces:
-     · /natijalar.html          — the full gallery, filterable by concern
+     · /natijalar          — the full gallery, filterable by concern
      · quiz result page         — filtered to the visitor's own concerns
      · product detail pages     — filtered to that product
    Add a new case here and it appears in all three.

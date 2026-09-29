@@ -78,10 +78,10 @@ footer a{color:var(--violet);text-decoration:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <link rel="stylesheet" href="../css/site.css">
-<link rel="canonical" href="https://rhodex.uz/uz/mahsulotlar.html">
-<link rel="alternate" hreflang="uz" href="https://rhodex.uz/uz/mahsulotlar.html">
-<link rel="alternate" hreflang="ru" href="https://rhodex.uz/ru/produkty.html">
-<link rel="alternate" hreflang="x-default" href="https://rhodex.uz/uz/mahsulotlar.html">
+<link rel="canonical" href="https://rhodex.uz/uz/mahsulotlar">
+<link rel="alternate" hreflang="uz" href="https://rhodex.uz/uz/mahsulotlar">
+<link rel="alternate" hreflang="ru" href="https://rhodex.uz/ru/produkty">
+<link rel="alternate" hreflang="x-default" href="https://rhodex.uz/uz/mahsulotlar">
 <script src="../js/track.js"></script>
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
@@ -95,14 +95,14 @@ footer a{color:var(--violet);text-decoration:none}
 
 <header class="top">
   <div class="top-in">
-    <a href="mahsulotlar.html" class="logo">Rhodex</a>
+    <a href="mahsulotlar" class="logo">Rhodex</a>
     <nav class="nav">
-      <a href="mahsulotlar.html" class="on" data-nav="prods">Mahsulotlar</a>
-      <a href="teri-testi.html" data-nav="quiz">Teri testi</a>
-      <a href="../education/uz/index.html" data-nav="edu">Bilim</a>
-      <a href="natijalar.html" data-nav="res">Natijalar</a>
+      <a href="mahsulotlar" class="on" data-nav="prods">Mahsulotlar</a>
+      <a href="teri-testi" data-nav="quiz">Teri testi</a>
+      <a href="../education/uz/" data-nav="edu">Bilim</a>
+      <a href="natijalar" data-nav="res">Natijalar</a>
     </nav>
-    <div class="lang"><a href="mahsulotlar.html" class="on" hreflang="uz">UZ</a><a href="../ru/produkty.html" data-swap hreflang="ru">РУ</a></div>
+    <div class="lang"><a href="mahsulotlar" class="on" hreflang="uz">UZ</a><a href="../ru/produkty" data-swap hreflang="ru">РУ</a></div>
   </div>
 </header>
 
@@ -120,7 +120,7 @@ footer a{color:var(--violet);text-decoration:none}
 <div class="count"><p id="countTxt"></p><button class="clear" id="clearBtn" onclick="clearAll()" hidden></button></div>
 <main class="grid" id="grid"></main>
 <div class="home-strip">
-  <a class="qcta" href="teri-testi.html"><div><b>Qaysi mahsulot sizga mos?</b><span>3 daqiqalik teri testi teri turingizni aniqlaydi, mutaxassis esa Telegramda shaxsiy tavsiya beradi. Bepul.</span></div><i>Testni boshlash →</i></a>
+  <a class="qcta" href="teri-testi"><div><b>Qaysi mahsulot sizga mos?</b><span>3 daqiqalik teri testi teri turingizni aniqlaydi, mutaxassis esa Telegramda shaxsiy tavsiya beradi. Bepul.</span></div><i>Testni boshlash →</i></a>
 </div>
 
 <footer>
@@ -236,7 +236,7 @@ function drawGrid(){
     const gold = p.kfda.length ? `<span class="gold-tag">KFDA</span>` : '';
     const safe = '';   // pregnancy chip lives on the detail page only
     const spf = p.spf ? `<span class="cspf">${p.spf}</span>` : '<span></span>';
-    return `<a class="card" href="mahsulot.html?p=${p.slug}">
+    return `<a class="card" href="mahsulot?p=${p.slug}">
       <div class="shot">${gold}<img src="${p.image}" alt="${p.name}" loading="lazy"
         onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ph',textContent:'R'}))"></div>
       <div class="cbody">

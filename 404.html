@@ -20,8 +20,8 @@
   var lang = 'uz';
   try { if (localStorage.getItem('rhodex-lang') === 'ru') lang = 'ru'; } catch(e){}
   if (/^\/ru(\/|$)/.test(location.pathname)) lang = 'ru';
-  var list = lang === 'ru' ? '/ru/produkty.html' : '/uz/mahsulotlar.html';
-  var one  = lang === 'ru' ? '/ru/produkt.html?p=' : '/uz/mahsulot.html?p=';
+  var list = lang === 'ru' ? '/ru/produkty' : '/uz/mahsulotlar';
+  var one  = lang === 'ru' ? '/ru/produkt?p=' : '/uz/mahsulot?p=';
   var m = /(product\d+)/i.exec(location.pathname);
   var dest = (m && OLD[m[1].toLowerCase()]) ? one + OLD[m[1].toLowerCase()] : list;
   location.replace(dest + (location.search && !m ? location.search : ''));
@@ -35,6 +35,6 @@
 <meta name="theme-color" content="#5b4170">
 </head>
 <body style="font-family:sans-serif;text-align:center;padding:60px 20px">
-<p><a href="/uz/mahsulotlar.html">Mahsulotlar</a> · <a href="/ru/produkty.html">Продукты</a></p>
+<p><a href="/uz/mahsulotlar">Mahsulotlar</a> · <a href="/ru/produkty">Продукты</a></p>
 </body>
 </html>

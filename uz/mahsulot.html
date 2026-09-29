@@ -84,10 +84,10 @@ footer a{color:var(--violet);text-decoration:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <link rel="stylesheet" href="../css/site.css">
-<link rel="canonical" href="https://rhodex.uz/uz/mahsulot.html">
-<link rel="alternate" hreflang="uz" href="https://rhodex.uz/uz/mahsulot.html">
-<link rel="alternate" hreflang="ru" href="https://rhodex.uz/ru/produkt.html">
-<link rel="alternate" hreflang="x-default" href="https://rhodex.uz/uz/mahsulot.html">
+<link rel="canonical" href="https://rhodex.uz/uz/mahsulot">
+<link rel="alternate" hreflang="uz" href="https://rhodex.uz/uz/mahsulot">
+<link rel="alternate" hreflang="ru" href="https://rhodex.uz/ru/produkt">
+<link rel="alternate" hreflang="x-default" href="https://rhodex.uz/uz/mahsulot">
 <script src="../js/track.js"></script>
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
@@ -101,14 +101,14 @@ footer a{color:var(--violet);text-decoration:none}
 
 <header class="top">
   <div class="top-in">
-    <a href="mahsulotlar.html" class="logo">Rhodex</a>
+    <a href="mahsulotlar" class="logo">Rhodex</a>
     <nav class="nav">
-      <a href="mahsulotlar.html" data-nav="prods">Mahsulotlar</a>
-      <a href="teri-testi.html" data-nav="quiz">Teri testi</a>
-      <a href="../education/uz/index.html" data-nav="edu">Bilim</a>
-      <a href="natijalar.html" data-nav="res">Natijalar</a>
+      <a href="mahsulotlar" data-nav="prods">Mahsulotlar</a>
+      <a href="teri-testi" data-nav="quiz">Teri testi</a>
+      <a href="../education/uz/" data-nav="edu">Bilim</a>
+      <a href="natijalar" data-nav="res">Natijalar</a>
     </nav>
-    <div class="lang"><a href="mahsulot.html" class="on" hreflang="uz">UZ</a><a href="../ru/produkt.html" data-swap hreflang="ru">РУ</a></div>
+    <div class="lang"><a href="mahsulot" class="on" hreflang="uz">UZ</a><a href="../ru/produkt" data-swap hreflang="ru">РУ</a></div>
   </div>
 </header>
 
@@ -127,8 +127,8 @@ footer a{color:var(--violet);text-decoration:none}
 
 const lang = 'uz';
 const slug = new URLSearchParams(location.search).get('p');
-const RES_PAGE = 'natijalar.html';
-const GRID = 'mahsulotlar.html';
+const RES_PAGE = 'natijalar';
+const GRID = 'mahsulotlar';
 
 const T = {
   uz:{ home:"Bosh sahifa", prods:"Mahsulotlar", bens:"Foydali xususiyatlari",
@@ -153,7 +153,7 @@ function draw(){
   if (!p || !p.published){
     document.getElementById('crumb').innerHTML = '';
     document.getElementById('main').innerHTML =
-      `<div class="miss"><p>${t('miss')}</p><a class="chip" href="mahsulotlar.html">${t('back')}</a></div>`;
+      `<div class="miss"><p>${t('miss')}</p><a class="chip" href="mahsulotlar">${t('back')}</a></div>`;
     return;
   }
   if (!window.__rxVC && window.rxTrack) { window.__rxVC = 1; rxTrack('ViewContent', { content_ids:[p.slug], content_type:'product', content_name:p.name }); }
@@ -161,8 +161,8 @@ function draw(){
   const cat = CATEGORIES.find(c => c.id === p.category);
   document.title = `${p.name} — Rhodex Uzbekistan`;
   document.getElementById('crumb').innerHTML =
-    `<a href="mahsulotlar.html">${t('prods')}</a>
-     &rsaquo; <a href="mahsulotlar.html?cat=${p.category}">${L(cat)}</a> &rsaquo; ${p.name}`;
+    `<a href="mahsulotlar">${t('prods')}</a>
+     &rsaquo; <a href="mahsulotlar?cat=${p.category}">${L(cat)}</a> &rsaquo; ${p.name}`;
 
   /* KFDA gold line renders only from the confirmed actives array.
      An empty array renders nothing — never a placeholder, never inferred. */
@@ -198,7 +198,7 @@ function draw(){
   const rel = live().filter(x => x.category === p.category && x.slug !== p.slug).slice(0, 3);
   const relBlock = rel.length ? `
     <section class="sec"><div class="sec-h">${t('rel')}</div><div class="rel">` +
-    rel.map(x => `<a class="rc" href="mahsulot.html?p=${x.slug}">
+    rel.map(x => `<a class="rc" href="mahsulot?p=${x.slug}">
       <p class="n">${x.name}</p><p class="s">${L(x.subtitle)} &middot; ${x.volume}</p></a>`).join('') +
     `</div></section>` : '';
 
