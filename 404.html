@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhodex Uzbekistan</title>
+<meta name="robots" content="noindex">
+<script>
+/* GitHub Pages shows this file for any address that no longer exists.
+   Old-site links (Google results, ads, Instagram, QR codes) are forwarded
+   to the matching new page instead of a dead "404".
+   Add more old product numbers to OLD as you find them in Search Console. */
+(function(){
+  var OLD = {
+    'product01':'luminar-facial-soap',   'product02':'clear-gel',
+    'product03':'rehydro-skin-solution', 'product04':'white-mask',
+    'product05':'nutritive-emu-cream',   'product06':'multi-protection-cream',
+    'product07':'overall-natural-balm',  'product08':'blanc-finish-cover-pact',
+    'product09':'concentration-eye-cream','product10':'emu-gel',
+    'product11':'intensive-eye-contour-gel','product12':'moisture-collagen-cream',
+    'product13':'bonfit-body-lotion',    'product14':'intensive-whitening-serum',
+    'product15':'doux-peeling-gel',      'product19':'lucent-complexion-cream'
+    /* 16, 17, 18, 20 are not in the current range -> catalogue */
+  };
+  /* Old Uzbek/Russian page names -> new English names (keeps old ads,
+     Google results and shared links working after the rename). */
+  var RENAMED = { "/uz/mahsulotlar": "/uz/products", "/uz/mahsulot": "/uz/product", "/uz/teri-testi": "/uz/skintest", "/uz/natijalar": "/uz/results", "/ru/produkty": "/ru/products", "/ru/produkt": "/ru/product", "/ru/test-kozhi": "/ru/skintest", "/ru/rezultaty": "/ru/results", "/education/uz/teri-turlari": "/education/uz/skin-types", "/education/uz/teri-baryeri": "/education/uz/skin-barrier", "/education/uz/quruqlik-va-namlik": "/education/uz/dry-vs-dehydrated", "/education/uz/pigmentatsiya-va-doglar": "/education/uz/pigmentation", "/education/uz/quyosh-va-himoya": "/education/uz/sun-protection", "/education/uz/toshma-va-poralar": "/education/uz/acne-and-pores", "/education/uz/yosh-va-taranglik": "/education/uz/aging-and-firmness", "/education/ru/tipy-kozhi": "/education/ru/skin-types", "/education/ru/barer-kozhi": "/education/ru/skin-barrier", "/education/ru/suhost-i-uvlazhnenie": "/education/ru/dry-vs-dehydrated", "/education/ru/pigmentaciya-i-pyatna": "/education/ru/pigmentation", "/education/ru/solnce-i-zashita": "/education/ru/sun-protection", "/education/ru/vysypaniya-i-pory": "/education/ru/acne-and-pores", "/education/ru/vozrast-i-uprugost": "/education/ru/aging-and-firmness" };
+  var path = location.pathname.replace(/\.html$/i, '').replace(/\/$/, '');
+  if (RENAMED[path]) { location.replace(RENAMED[path] + location.search + location.hash); return; }
+  var lang = 'uz';
+  try { if (localStorage.getItem('rhodex-lang') === 'ru') lang = 'ru'; } catch(e){}
+  if (/^\/ru(\/|$)/.test(location.pathname)) lang = 'ru';
+  var list = lang === 'ru' ? '/ru/products' : '/uz/products';
+  var one  = lang === 'ru' ? '/ru/product?p=' : '/uz/product?p=';
+  var m = /(product\d+)/i.exec(location.pathname);
+  var dest = (m && OLD[m[1].toLowerCase()]) ? one + OLD[m[1].toLowerCase()] : list;
+  if (/^\/results(\.html)?$/i.test(location.pathname)) dest = lang === 'ru' ? '/ru/results' : '/uz/results';
+  location.replace(dest + (location.search && !m ? location.search : ''));
+})();
+</script>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/icons/site.webmanifest">
+<meta name="theme-color" content="#5b4170">
+</head>
+<body style="font-family:sans-serif;text-align:center;padding:60px 20px">
+<p><a href="/uz/products">Mahsulotlar</a> · <a href="/ru/products">Продукты</a></p>
+</body>
+</html>
