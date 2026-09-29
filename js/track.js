@@ -11,7 +11,7 @@
      Contact             any other Telegram link        (Meta standard)
    ═══════════════════════════════════════════════════════════════════ */
 var RHODEX_PIXEL_ID = '1873816187313952';
-var RHODEX_YM_ID    = null;            // Yandex Metrica counter number, e.g. 12345678
+var RHODEX_YM_ID    = 113159948;       // Yandex Metrica counter (rhodex.uz)
 
 /* ── Meta Pixel (official base code) ── */
 !function(f,b,e,v,n,t,s)
