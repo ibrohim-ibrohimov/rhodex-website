@@ -358,3 +358,36 @@ main.grid .cname{font-size:17px}
 .qi-pics img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
 .qi-pics b{position:absolute;left:6px;bottom:6px;background:rgba(43,34,51,.75);color:#fff;font-size:12px;font-weight:600;padding:2px 8px;border-radius:10px}
 @media(max-width:600px){.qi-h{font-size:26px}.qi-faces figcaption{font-size:13px}}
+
+/* ═══ Hero: KFDA explainer ═══ */
+.kfda{margin-top:18px;max-width:440px;background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:14px;padding:14px 16px;backdrop-filter:blur(4px);box-shadow:0 6px 20px rgba(52,28,74,.10)}
+.kfda-t{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15.5px;color:#341c4a;margin-bottom:6px}
+.kfda-t svg{width:20px;height:20px;flex:none;color:#5b4170}
+.kfda-d{margin:0;font-size:14px;line-height:1.5;color:#2c2038}
+.kfda-d b{color:#341c4a}
+@media(max-width:760px){
+  .phero{min-height:0;padding-bottom:16px}
+  .kfda{margin-top:12px;padding:10px 12px;border-radius:12px;max-width:none}
+  .kfda-t{font-size:13.5px;margin-bottom:4px}
+  .kfda-t svg{width:17px;height:17px}
+  .kfda-d{font-size:12px;line-height:1.4}
+  .kfda-t{align-items:flex-start;line-height:1.3}
+}
+
+/* ═══ Footer contacts ═══ */
+.fcontact{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 0 12px}
+.fc{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-size:15px;font-weight:600;text-decoration:none!important;border:1px solid var(--rule);background:#fff;color:var(--plum)!important;transition:background .15s,border-color .15s}
+.fc svg{width:18px;height:18px;flex:none}
+.fc-tg svg{color:#2aabee}
+.fc:hover{border-color:var(--plum);background:#f6f1fa}
+
+/* ═══ Order bar icon + pop-up bar on home/results ═══ */
+.mbar a{display:flex!important;align-items:center;justify-content:center;gap:9px}
+.mbar a svg{width:20px;height:20px;flex:none}
+.mbar.mbar-g{display:block;position:fixed;z-index:20;transition:transform .25s ease,opacity .25s ease}
+@media(min-width:761px){
+  .mbar.mbar-g{left:auto;right:24px;bottom:24px;width:auto;padding:0;background:none;border:0;opacity:0;transform:translateY(20px);pointer-events:none}
+  .mbar.mbar-g.show{opacity:1;transform:none;pointer-events:auto}
+  .mbar.mbar-g a{background:var(--plum);color:#fff;border-radius:999px;padding:14px 26px;font-size:16px;font-weight:600;text-decoration:none;box-shadow:0 10px 28px rgba(52,28,74,.3)}
+  .mbar.mbar-g a:hover{background:#4a3460}
+}

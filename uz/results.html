@@ -81,7 +81,7 @@ footer a{color:var(--violet);text-decoration:none}
   <nav class="nav">
     <a href="products">Mahsulotlar</a>
     <a href="skintest">Teri testi</a>
-    <a href="../education/uz/">Bilim</a>
+    <a href="../education/uz/">Blog</a>
     <a href="results" class="on">Natijalar</a>
   </nav>
   <div class="lang"><a href="results" class="on" hreflang="uz">UZ</a><a href="../ru/results" hreflang="ru">РУ</a></div>
@@ -91,12 +91,11 @@ footer a{color:var(--violet);text-decoration:none}
 
 <div class="wrap">
   <div class="grid" id="grid"></div>
-  <p class="disc">Barcha suratlar mijozlarning yozma roziligi bilan joylashtirilgan. Natijalar teri turi, yosh va parvarish muntazamligiga qarab har xil boʻlishi mumkin — bu kafolat emas.</p>
   <div class="cta"><h3>Sizning teringizga nima mos keladi?</h3><p>Teri testidan oʻting — 3 daqiqada teri tipingizni aniqlab, sizga mos tartibni koʻrsatamiz.</p><a href="skintest">Teri testini boshlash</a></div>
 </div>
 
 <footer>
-  <p style="margin:0 0 8px"><a href="https://t.me/rhodexuz">t.me/rhodexuz</a> &nbsp;·&nbsp; +998 90 356 01 00</p>
+  <div class="fcontact"><a class="fc fc-tg" href="https://t.me/rhodexuz" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 4.2 2.9 11.4c-1 .4-1 1.9.1 2.2l4.6 1.4 1.8 5.6c.3.9 1.4 1.1 2 .4l2.6-2.6 4.7 3.5c.7.5 1.7.1 1.9-.8l3-15.1c.2-1.1-.9-2-1.9-1.6ZM9.6 14.5l8.2-7.3-6.4 8.3-.3 3.1-1.5-4.1Z" fill="currentColor"/></svg><span>@rhodexuz</span></a><a class="fc fc-ph" href="tel:+998903560100"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z" fill="currentColor"/></svg><span>+998 90 356 01 00</span></a></div>
   <p style="margin:0;opacity:.6">&copy; 2026 Rhodex Uzbekistan</p>
   <p style="margin:6px 0 0;opacity:.5;font-size:12.5px">Sayt tahlil maqsadida cookie-fayllardan foydalanadi (Meta, Yandex).</p>
 </footer>
@@ -152,6 +151,16 @@ function drawGrid(){
 
 window.setPick=function(c){pick=c;drawFilters();drawGrid();};
 drawGrid();
+</script>
+<div class="mbar mbar-g" data-after="#none"><a data-track="order" href="https://t.me/rhodexuz?text=Assalomu%20alaykum%21%20Rhodex%20mahsulotlariga%20buyurtma%20bermoqchiman." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 4.2 2.9 11.4c-1 .4-1 1.9.1 2.2l4.6 1.4 1.8 5.6c.3.9 1.4 1.1 2 .4l2.6-2.6 4.7 3.5c.7.5 1.7.1 1.9-.8l3-15.1c.2-1.1-.9-2-1.9-1.6ZM9.6 14.5l8.2-7.3-6.4 8.3-.3 3.1-1.5-4.1Z" fill="currentColor"/></svg>Buyurtma berish</a></div>
+<script>
+/* Pop-up order bar: appears once the visitor scrolls past the given point */
+(function(){
+  var bar=document.querySelector('.mbar-g'); if(!bar) return;
+  var t=document.querySelector(bar.dataset.after);
+  function f(){ bar.classList.toggle('show', t ? t.getBoundingClientRect().top < innerHeight*0.5 : scrollY > 250); }
+  addEventListener('scroll',f,{passive:true}); addEventListener('resize',f); f();
+})();
 </script>
 </body>
 </html>

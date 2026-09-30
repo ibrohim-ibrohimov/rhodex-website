@@ -49,10 +49,12 @@ function rxTrack(name, params) {
 
 /* ── Telegram clicks anywhere on the site ── */
 document.addEventListener('click', function (ev) {
+  var tel = ev.target.closest && ev.target.closest('a[href^="tel:"]');
+  if (tel) { rxTrack('Contact', { content_name: 'phone_call', page: location.pathname }); return; }
   var a = ev.target.closest && ev.target.closest('a[href*="t.me/"]');
   if (!a) return;
   if (a.id === 'tgBtn') rxTrack('Lead', { content_name: 'quiz_telegram', lang: document.documentElement.lang });
-  else if (a.dataset.track === 'order') rxTrack('Lead', { content_name: 'product_order', content_ids: [new URLSearchParams(location.search).get('p') || ''], lang: document.documentElement.lang });
+  else if (a.dataset.track === 'order') rxTrack('Lead', { content_name: a.closest('.mbar-g') ? 'order_bar' : 'product_order', content_ids: [new URLSearchParams(location.search).get('p') || ''], lang: document.documentElement.lang });
   else rxTrack('Contact', { content_name: 'telegram_link', page: location.pathname });
 }, true);
 
