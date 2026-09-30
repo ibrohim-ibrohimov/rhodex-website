@@ -403,3 +403,16 @@ main.grid .cname{font-size:17px}
   .mbar.mbar-g a{background:var(--plum);color:#fff;border-radius:999px;padding:14px 26px;font-size:16px;font-weight:600;text-decoration:none;box-shadow:0 10px 28px rgba(52,28,74,.3)}
   .mbar.mbar-g a:hover{background:#4a3460}
 }
+
+/* ═══ Trust strip: smooth loop on mobile only ═══ */
+.trustbar .dup{display:none!important}
+@media(max-width:760px){
+  .trustwrap{background:var(--white);border-bottom:1px solid var(--rule);overflow:hidden}
+  .trustwrap .trustbar{background:none;border:0;overflow:visible;width:max-content;gap:28px!important;padding:12px 28px 12px 0!important;animation:rxloop 16s linear infinite}
+  .trustwrap .trustbar .dup{display:flex!important}
+  @keyframes rxloop{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+}
+@media(max-width:760px) and (prefers-reduced-motion:reduce){
+  .trustwrap .trustbar{animation:none;padding-left:16px!important}
+  .trustwrap .trustbar .dup{display:none!important}
+}
