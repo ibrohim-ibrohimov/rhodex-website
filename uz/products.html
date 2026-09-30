@@ -109,7 +109,7 @@ footer a{color:var(--violet);text-decoration:none}
 <section class="phero">
   <div class="phero-in">
     <div class="phero-txt">
-    <h1>Premium koreys kosmetsevtikasi</h1>
+    <h1>Janubiy Koreya kosmetsevtikasi</h1>
     <div class="kfda"><div class="kfda-t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.4 2.4 4.6-4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>KFDA tasdiqlagan faol moddalar</span></div><p class="kfda-d"><b>KFDA</b> — Janubiy Koreyaning davlat nazorat agentligi.</p></div>
     </div>
   </div>
@@ -306,7 +306,7 @@ draw();
 (function(){
   var bar=document.querySelector('.mbar-g'); if(!bar) return;
   var t=document.querySelector(bar.dataset.after);
-  function f(){ bar.classList.toggle('show', t ? t.getBoundingClientRect().top < innerHeight*0.5 : scrollY > 250); }
+  function f(){ bar.classList.toggle('show', t ? (scrollY > 120 && t.getBoundingClientRect().top < innerHeight*0.5) : scrollY > 250); }
   addEventListener('scroll',f,{passive:true}); addEventListener('resize',f); f();
 })();
 </script>

@@ -312,7 +312,6 @@ main.grid .cname{font-size:17px}
 .tab{border-radius:6px!important}
 .chip{text-transform:none!important;letter-spacing:0!important;font-size:14.5px!important;padding:6px 13px!important;background:var(--white);border-color:var(--rule)!important;color:var(--plum)!important}
 .chip:hover{border-color:var(--orchid)!important;background:var(--lilac)}
-.chip.safe{border-color:var(--gold)!important;color:#8a6d3b!important;background:#faf5ec}
 .chip-lbl{font-size:12.5px!important}
 .buy{display:flex;flex-direction:column;gap:10px;margin:4px 0 22px}
 .buy1{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--plum);color:#fff;border-radius:10px;padding:15px 20px;font-size:16.5px;font-weight:600;text-decoration:none;box-shadow:0 6px 18px rgba(91,65,112,.22)}
@@ -359,20 +358,33 @@ main.grid .cname{font-size:17px}
 .qi-pics b{position:absolute;left:6px;bottom:6px;background:rgba(43,34,51,.75);color:#fff;font-size:12px;font-weight:600;padding:2px 8px;border-radius:10px}
 @media(max-width:600px){.qi-h{font-size:26px}.qi-faces figcaption{font-size:13px}}
 
-/* ═══ Hero: KFDA explainer ═══ */
-.kfda{margin-top:18px;max-width:440px;background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:14px;padding:14px 16px;backdrop-filter:blur(4px);box-shadow:0 6px 20px rgba(52,28,74,.10)}
-.kfda-t{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15.5px;color:#341c4a;margin-bottom:6px}
-.kfda-t svg{width:20px;height:20px;flex:none;color:#5b4170}
-.kfda-d{margin:0;font-size:14px;line-height:1.5;color:#2c2038}
-.kfda-d b{color:#341c4a}
+/* ═══ Safety green: KFDA + pregnancy-safe ═══ */
+:root{--safe:#2e7a57;--safe-deep:#1f5a40;--safe-bg:#ecf5ef;--safe-rule:#b8d8c5}
+/* Hero: KFDA explainer */
+.phero .kfda{margin-top:18px;max-width:440px;background:rgba(240,248,243,.9);border:1px solid var(--safe-rule);border-left:4px solid var(--safe);border-radius:12px;padding:13px 16px;backdrop-filter:blur(4px);box-shadow:0 6px 20px rgba(31,90,64,.12)}
+.kfda-t{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15.5px;color:var(--safe-deep);margin-bottom:5px}
+.kfda-t svg{width:20px;height:20px;flex:none;color:var(--safe)}
+.kfda-d{margin:0;font-size:14px;line-height:1.5;color:#2b3a33}
+.kfda-d b{color:var(--safe-deep)}
 @media(max-width:760px){
   .phero{min-height:0;padding-bottom:16px}
-  .kfda{margin-top:12px;padding:10px 12px;border-radius:12px;max-width:none}
-  .kfda-t{font-size:13.5px;margin-bottom:4px}
+  .phero .kfda{margin-top:12px;padding:10px 12px;border-radius:10px;max-width:none}
+  .kfda-t{font-size:13.5px;margin-bottom:4px;align-items:flex-start;line-height:1.3}
   .kfda-t svg{width:17px;height:17px}
   .kfda-d{font-size:12px;line-height:1.4}
-  .kfda-t{align-items:flex-start;line-height:1.3}
 }
+/* Catalogue: KFDA tag, pregnancy-safe line and filter */
+.gold-tag{background:var(--safe-bg)!important;color:var(--safe-deep)!important;border:1px solid var(--safe-rule)!important;border-radius:4px!important}
+.safe-dot{color:var(--safe)!important}
+.fb.safe.on{background:var(--safe)!important;border-color:var(--safe)!important}
+/* Product page: KFDA actives line + pregnancy-safe chip */
+.pinfo .kfda,.kfda.kline{display:flex;align-items:center;gap:9px;background:var(--safe-bg);border:1px solid var(--safe-rule)!important;border-radius:10px;padding:10px 14px!important;margin:0 0 18px}
+.kfda.kline svg{width:19px;height:19px;flex:none;color:var(--safe)}
+.kfda.kline p{color:var(--safe-deep)!important;font-size:15px!important}
+.chip.safe{display:inline-flex;align-items:center;gap:6px;border-color:var(--safe-rule)!important;color:var(--safe-deep)!important;background:var(--safe-bg)!important;font-weight:500}
+.chip.safe::before{content:"";width:14px;height:14px;flex:none;background:var(--safe);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Zm-1.2 13.6-3.5-3.5 1.4-1.4 2.1 2.1 4.7-4.7 1.4 1.4-6.1 6.1Z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Zm-1.2 13.6-3.5-3.5 1.4-1.4 2.1 2.1 4.7-4.7 1.4 1.4-6.1 6.1Z'/%3E%3C/svg%3E") center/contain no-repeat}
+/* Skin test result: KFDA label */
+.qres .kfda,.kfda.qk{color:var(--safe)!important}
 
 /* ═══ Footer contacts ═══ */
 .fcontact{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 0 12px}

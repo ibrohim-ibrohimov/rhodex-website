@@ -158,7 +158,7 @@ drawGrid();
 (function(){
   var bar=document.querySelector('.mbar-g'); if(!bar) return;
   var t=document.querySelector(bar.dataset.after);
-  function f(){ bar.classList.toggle('show', t ? t.getBoundingClientRect().top < innerHeight*0.5 : scrollY > 250); }
+  function f(){ bar.classList.toggle('show', t ? (scrollY > 120 && t.getBoundingClientRect().top < innerHeight*0.5) : scrollY > 250); }
   addEventListener('scroll',f,{passive:true}); addEventListener('resize',f); f();
 })();
 </script>
