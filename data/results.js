@@ -69,7 +69,7 @@ const RESULTS = [
     consentRef: 'Owner confirmed written consent 2026-09-28',
     note: {
       uz: "Anti-age toʻplami (sovun, sprey, Emu krem, Multi SPF, maska): teri namlandi, qizarish kamaydi, ton tekislandi.",
-      ru: "Антивозрастной набор (мыло, спрей, Emu крем, Multi SPF, маска): кожа увлажнилась, покраснение уменьшилось, тон выровнялся."
+      ru: "Антивозрастной набор (мыло, спрей, крем Emu, Multi SPF, маска): кожа увлажнилась, покраснение уменьшилось, тон выровнялся."
     }
   },
 

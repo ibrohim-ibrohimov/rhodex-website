@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rhodex Uzbekistan — корейская косметацевтика: продукты</title>
-<meta name="description" content="Корейская косметацевтика Rhodex и Rebirth. Выберите средство по типу кожи и проблеме.">
+<title>Rhodex Uzbekistan — корейская космецевтика: продукты</title>
+<meta name="description" content="Корейская космецевтика Rhodex и Rebirth. Выберите средство по типу кожи и проблеме.">
 <style>
 :root{
   --plum:#5b4170; --lilac:#efe9f4; --orchid:#c8a2c8; --cream:#f8f5ef;
@@ -109,8 +109,8 @@ footer a{color:var(--violet);text-decoration:none}
 <section class="phero">
   <div class="phero-in">
     <div class="phero-txt">
-    <h1>Южнокорейская косметацевтика</h1>
-    <div class="kfda"><div class="kfda-t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.4 2.4 4.6-4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Активные компоненты, одобренные KFDA</span></div><p class="kfda-d"><b>KFDA</b> — государственное агентство контроля Южной Кореи.</p></div>
+    <h1>Южнокорейская космецевтика</h1>
+    <div class="kfda"><div class="kfda-t"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.5 12 2.4 2.4 4.6-4.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Активные компоненты, одобренные KFDA</span></div><p class="kfda-d"><b>KFDA</b> — государственный надзорный орган Южной Кореи.</p></div>
     </div>
   </div>
 </section>
@@ -145,7 +145,7 @@ const T = {
        all:"Barchasi", found:"ta mahsulot", clear:"Filtrlarni tozalash",
        none:"Bu filtrlar boʻyicha mahsulot topilmadi.",
        noneAct:"Filtrlarni tozalash", safe:"Homiladorlikda xavfsiz" },
-  ru:{ eyebrow:"Корейская косметацевтика", title:"Продукты",
+  ru:{ eyebrow:"Корейская космецевтика", title:"Продукты",
        lead:"Каждый продукт разработан под конкретное состояние кожи. Выберите по типу кожи или проблеме.",
        cat:"Категория", type:"Тип кожи", concern:"Проблема", use:"Применение", safety:"Безопасность",
        all:"Все", found:"продуктов", clear:"Сбросить фильтры",
@@ -227,7 +227,7 @@ function drawGrid(){
   if (types.size || concerns.size) list = list.slice().sort((a,b) => score(b) - score(a));
   const cn = document.getElementById('countTxt');
   const cb = document.getElementById('clearBtn');
-  cn.textContent = list.length + ' ' + t('found');
+  cn.textContent = list.length + ' ' + (lang === 'ru' ? ['продукт','продукта','продуктов'][(n => n%10===1 && n%100!==11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2)(list.length)] : t('found'));
   cb.textContent = t('clear');
   cb.hidden = (cat === 'all' && types.size === 0 && concerns.size === 0);
 

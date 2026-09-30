@@ -193,17 +193,17 @@ var QS = [
     opts:[
       {f:'oily',        uz:"Yogʻli va yaltiroq",                    ru:"Жирная и блестящая",                    s:[3,0,1,0]},
       {f:'dry',         uz:"Quruq va tortishgan",                   ru:"Сухая и стянутая",                      s:[0,3,0,0]},
-      {f:'combination', uz:"T-zona yogʻli, yonoqlar quruq",         ru:"T-зона жирная, щёки сухие",             s:[0,0,3,0]},
-      {f:'normal',      uz:"Tiniq va qulay, oʻzgarishsiz",          ru:"Чистая и комфортная, без изменений",    s:[0,0,0,3]}
+      {f:'combination', uz:"T-zona yogʻli, yonoqlar quruq",         ru:"Т-зона жирная, щёки сухие",             s:[0,0,3,0]},
+      {f:'normal',      uz:"Tiniq va qulay, oʻzgarishsiz",          ru:"Комфортная, без блеска и стянутости",    s:[0,0,0,3]}
     ]},
   { id:'shine',
     uz:"Kunning yarmida yaltirash qayerda paydo boʻladi?",
-    ru:"Где к середине дня появляется блеск?",
+    ru:"Где к середине дня появляется жирный блеск?",
     opts:[
       {f:'oily',        uz:"Butun yuzda",                            ru:"По всему лицу",                        s:[3,0,0,0]},
-      {f:'dry',         uz:"Umuman yoʻq — teri quruq qoladi",        ru:"Совсем нет — кожа остаётся сухой",     s:[0,3,0,0]},
-      {f:'combination', uz:"Faqat peshona, burun va iyakda",         ru:"Только лоб, нос и подбородок",         s:[1,0,3,0]},
-      {f:'normal',      uz:"Yengil yaltirash, noqulayliksiz",        ru:"Лёгкий блеск, без дискомфорта",        s:[0,0,0,3]}
+      {f:'dry',         uz:"Umuman yoʻq — teri quruq qoladi",        ru:"Нигде — кожа остаётся сухой",     s:[0,3,0,0]},
+      {f:'combination', uz:"Faqat peshona, burun va iyakda",         ru:"Только на лбу, носу и подбородке",         s:[1,0,3,0]},
+      {f:'normal',      uz:"Yengil yaltirash, noqulayliksiz",        ru:"Едва заметный, кожа комфортная",        s:[0,0,0,3]}
     ]},
   { id:'pores',
     uz:"Poralar va teri teksturasi qanday?",
@@ -222,18 +222,18 @@ var SENSQ = {
   ru:"Как ваша кожа реагирует на новый крем или смену погоды?",
   opts:[
     {uz:"Deyarli hech qanday reaksiya yoʻq",              ru:"Практически никак не реагирует",             v:0},
-    {uz:"Baʼzan yengil qizarish, tez oʻtib ketadi",        ru:"Иногда лёгкое покраснение, быстро проходит", v:2},
-    {uz:"Tez-tez qizaradi, achishadi yoki qichiydi",       ru:"Часто краснеет, печёт или зудит",            v:4},
-    {uz:"Koʻp mahsulotlar achishtiradi, qizarish uzoq turadi", ru:"Многие средства жгут, покраснение долго держится", v:6}
+    {uz:"Baʼzan yengil qizarish, tez oʻtib ketadi",        ru:"Иногда слегка краснеет, быстро проходит", v:2},
+    {uz:"Tez-tez qizaradi, achishadi yoki qichiydi",       ru:"Часто краснеет, появляются жжение и зуд",            v:4},
+    {uz:"Koʻp mahsulotlar achishtiradi, qizarish uzoq turadi", ru:"Многие средства вызывают жжение, покраснение долго не проходит", v:6}
   ]
 };
 
 /* ── Concerns ───────────────────────────────────────────────────── */
 var CONC = [
-  {v:'acne',        uz:"Toshmalar, ortiqcha yogʻlanish, qora nuqtalar", ru:"Высыпания, жирность, чёрные точки"},
+  {v:'acne',        uz:"Toshmalar, ortiqcha yogʻlanish, qora nuqtalar", ru:"Высыпания, жирный блеск, чёрные точки"},
   {v:'dryness',     uz:"Quruqlik, tortishish, mayda ajinlar",           ru:"Сухость, стянутость, мелкие морщины"},
   {v:'pigment',     uz:"Qoramtir dogʻlar, pigmentatsiya",               ru:"Тёмные пятна, пигментация"},
-  {v:'redness',     uz:"Qizarish va taʼsirchanlik",                     ru:"Покраснение и чувствительность"},
+  {v:'redness',     uz:"Qizarish va taʼsirchanlik",                     ru:"Покраснения, чувствительность"},
   {v:'dull',        uz:"Xira koʻrinish, notekis teri rangi",            ru:"Тусклый цвет лица, неровный тон"},
   {v:'wrinkles',    uz:"Ajinlar, taranglik yoʻqolishi",                 ru:"Морщины, потеря упругости"}
 ];
@@ -248,16 +248,16 @@ var TYPES = {
     wRu:"Липидный барьер кожи ослаблен — влага не удерживается и быстро испаряется. Сухой климат Ташкента и отопительный сезон ускоряют этот процесс. Поэтому сухой коже нужна не только влага, но и липиды, восстанавливающие барьер." },
   combination:{ uz:"Kombi teri", ru:"Комбинированная кожа", pos:null,
     wUz:"T-zonada yogʻ bezlari zichroq joylashgan va faolroq ishlaydi, yonoqlarda esa ular kamroq. Natijada bitta yuzda ikki xil teri: burun va peshona yogʻli, yonoqlar quruq. Eng keng tarqalgan teri tipi — va eng koʻp xato qilinadigan tip, chunki koʻpchilik butun yuzga bir xil parvarish qoʻllaydi.",
-    wRu:"В T-зоне сальные железы расположены плотнее и работают активнее, на щеках их меньше. В итоге на одном лице два типа кожи: нос и лоб жирные, щёки сухие. Самый распространённый тип — и тип, с которым чаще всего ошибаются, применяя один и тот же уход ко всему лицу." },
+    wRu:"В Т-зоне сальные железы расположены плотнее и работают активнее, на щеках их меньше. В итоге на одном лице два типа кожи: нос и лоб жирные, щёки сухие. Это самый распространённый тип кожи — и именно с ним чаще всего ошибаются, нанося одни и те же средства на всё лицо." },
   normal:{ uz:"Normal teri", ru:"Нормальная кожа", pos:50,
     wUz:"Yogʻ bezlari muvozanatda ishlaydi va bar'yer butun. Bu holatni saqlash muammoni tuzatishdan ancha oson — lekin 25 yoshdan keyin kollagen yiliga taxminan 1% kamayadi va teri asta-sekin quruqlashadi. Profilaktika hozir boshlanadi.",
-    wRu:"Сальные железы работают сбалансированно, барьер цел. Поддерживать это состояние гораздо проще, чем восстанавливать — но после 25 лет коллаген убывает примерно на 1% в год, и кожа постепенно становится суше. Профилактика начинается сейчас." }
+    wRu:"Сальные железы работают сбалансированно, барьер цел. Поддерживать это состояние гораздо проще, чем восстанавливать — но после 25 лет содержание коллагена снижается примерно на 1% в год, и кожа постепенно становится суше. Начинать профилактику стоит уже сейчас." }
 };
 
 var SENSTXT = {
   0:{uz:"Bardoshli",     ru:"Устойчивая",         nUz:"Teringiz tashqi taʼsirlarga barqaror — parvarish tanlashda erkinroqsiz.", nRu:"Ваша кожа устойчива к внешним воздействиям — вы свободнее в выборе ухода."},
-  1:{uz:"Biroz sezgir",  ru:"Слегка чувствительная", nUz:"Baʼzan reaksiya beradi. Yangi mahsulotni bir hafta davomida bittadan qoʻshing.", nRu:"Иногда реагирует. Вводите новые средства по одному, с интервалом в неделю."},
-  2:{uz:"Sezgir",        ru:"Чувствительная",     nUz:"Bar'yer zaiflashgan. Parvarish tartibi qisqa boʻlishi va tinchlantiruvchi komponentlarga tayanishi kerak.", nRu:"Барьер ослаблен. Уход должен быть коротким и опираться на успокаивающие компоненты."}
+  1:{uz:"Biroz sezgir",  ru:"Слегка чувствительная", nUz:"Baʼzan reaksiya beradi. Yangi mahsulotni bir hafta davomida bittadan qoʻshing.", nRu:"Кожа иногда реагирует. Вводите новые средства по одному, с интервалом в неделю."},
+  2:{uz:"Sezgir",        ru:"Чувствительная",     nUz:"Bar'yer zaiflashgan. Parvarish tartibi qisqa boʻlishi va tinchlantiruvchi komponentlarga tayanishi kerak.", nRu:"Барьер ослаблен. Уход должен быть минималистичным и строиться на успокаивающих компонентах."}
 };
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -300,29 +300,29 @@ var P = {
               ru:"Глубоко очищает поры, сохраняя естественную влагу кожи. Утром и вечером."},
   luminar:   {n:"Luminar Facial Soap",       stepUz:"Tozalash",  stepRu:"Очищение",
               uz:"88% fermentlangan oʻsimlik kompleksi — quritmasdan tozalaydi va bar'yerni mustahkamlaydi.",
-              ru:"88% ферментированный растительный комплекс — очищает не пересушивая и укрепляет барьер."},
+              ru:"88% ферментированного растительного комплекса — очищает, не пересушивая, и укрепляет барьер."},
   rehydro:   {n:"Rehydro Skin Solution",     stepUz:"Toner",     stepRu:"Тонер",
               uz:"Tozalashdan soʻng darhol seping — keyingi bosqichlar teriga yaxshiroq singadi.",
               ru:"Распылите сразу после очищения — следующие средства впитаются лучше.", kfda:"Adenozin"},
   whitening: {n:"Intensive Whitening Serum", stepUz:"Serum",     stepRu:"Сыворотка",
               uz:"Notekis tonni yoritadi va dogʻlarni kamaytirishga yordam beradi. Tonerdan soʻng, 2–3 tomchi.",
-              ru:"Осветляет неровный тон и помогает уменьшить пятна. После тонера, 2–3 капли.", kfda:"Niatsinamid"},
+              ru:"Выравнивает тон кожи и помогает уменьшить пигментные пятна. После тонера, 2–3 капли.", kfda:"Niatsinamid"},
   emugel:    {n:"Emu Gel",                   stepUz:"Konsentrat", stepRu:"Концентрат",
               uz:"98% sof Emu yogʻi — bar'yerni tiklaydi. 2–3 tomchi, yoki kremingizga qoʻshib.",
-              ru:"98% чистого масла Эму — восстанавливает барьер. 2–3 капли или добавьте в крем."},
+              ru:"98% чистого масла эму — восстанавливает барьер. 2–3 капли отдельно или вместе с кремом."},
   lucent:    {n:"Lucent Complexion Cream",   stepUz:"Krem",      stepRu:"Крем",
               uz:"Yengil tekstura, keramid kompleksi bilan. Pardoz ostida ham yaxshi turadi.",
-              ru:"Лёгкая текстура с керамидным комплексом. Хорошо держится под макияжем.", kfda:"Niatsinamid"},
+              ru:"Лёгкая текстура с керамидным комплексом. Хорошо ложится под макияж.", kfda:"Niatsinamid"},
   nutritive: {n:"Nutritive Emu Cream",       stepUz:"Krem",      stepRu:"Крем",
               uz:"6.99% Emu yogʻi va koreys oʻsimlik ekstraktlari — quruq va toliqqan teri uchun.",
-              ru:"6.99% масла Эму и корейские растительные экстракты — для сухой и уставшей кожи.", kfda:"Niatsinamid · Adenozin"},
+              ru:"6,99% масла эму и корейские растительные экстракты — для сухой и уставшей кожи.", kfda:"Niatsinamid · Adenozin"},
   collagen:  {n:"Moisture Collagen Cream",   stepUz:"Krem",      stepRu:"Крем",
               uz:"Dengiz kollageni va gialuron kislotasi — taranglik va elastiklik uchun kechki bosqich.",
               ru:"Морской коллаген и гиалуроновая кислота — вечерний этап для упругости."},
   mpc:       {n:"Multi Protection Cream",    stepUz:"Quyoshdan himoya", stepRu:"Защита от солнца",
               uz:"SPF50+ PA++++ — har kuni, hatto bulutli kunlarda ham. Parvarishning oxirgi bosqichi.",
               ru:"SPF50+ PA++++ — каждый день, даже в пасмурную погоду. Финальный этап ухода."},
-  mask:      {n:"White Mask",                stepUz:"Haftalik",  stepRu:"Еженедельно",
+  mask:      {n:"White Mask",                stepUz:"Haftalik",  stepRu:"Маска",
               uz:"Haftada 2–3 marta, 15–20 daqiqa — bir maskada butun ampula.",
               ru:"2–3 раза в неделю, 15–20 минут — целая ампула в одной маске."}
 };
@@ -352,25 +352,25 @@ var T = {
     lC:"Barcha mahsulotlarni koʻrish" },
   ru:{ title:"Тест кожи", res:"Ваш результат",
     lead:"Насколько хорошо вы знаете свою кожу?",
-    sub:"4 вопроса — тип кожи, уровень чувствительности и персональная консультация специалиста.",
+    sub:"4 вопроса — тип кожи, уровень чувствительности и персональный совет специалиста.",
     meta:"3 минуты · Бесплатно · Без регистрации",
     start:"Начать тест", back:"Назад", see:"Показать результат",
-    of:"вопрос", type:"Тип кожи", why:"Почему так происходит",
+    of:"Вопрос", type:"Тип кожи", why:"Почему так происходит",
     axis:"Ваши показатели", proof:"Похожие случаи: до и после",
     plan:"Ваш уход на 4 недели", morning:"Утром", evening:"Вечером",
-    concQ:"Какие проблемы вам знакомы?", concHint:"Выберите 1–3 или пропустите",
+    concQ:"Какие проблемы вам знакомы?", concHint:"Выберите 1–3 пункта или пропустите",
     ctaT:"Получите персональный совет в Telegram",
-    ctaD:"Нажмите кнопку — результат автоматически впишется в сообщение в Telegram. Специалист подберёт средства и схему ухода лично для вашей кожи. Бесплатно.",
+    ctaD:"Нажмите кнопку — результат автоматически появится в сообщении в Telegram. Специалист индивидуально подберёт средства и схему ухода для вашей кожи. Бесплатно.",
     ctaB:"Написать специалисту в Telegram",
-    copied:"Результат уже вписан в сообщение — в Telegram просто нажмите «Отправить». Если поле пустое, результат скопирован: долгое нажатие → Вставить.", before:"До", after:"После",
+    copied:"Результат уже в сообщении — в Telegram просто нажмите «Отправить». Если поле пустое, результат скопирован: удерживайте поле ввода → «Вставить».", before:"До", after:"После",
     more:"Читать дальше", again:"Пройти тест заново",
     dry:"Сухая", oily:"Жирная", resist:"Устойчивая", sensi:"Чувствительная",
-    tzone:"T-зона", cheek:"Щёки", sensL:"Чувствительность",
-    noProof:"Фотографии для этого типа скоро появятся.",
+    tzone:"Т-зона", cheek:"Щёки", sensL:"Чувствительность",
+    noProof:"Фотографии для этого типа кожи скоро появятся.",
     mon:"мес.", allRes:"Смотреть все результаты", proofNote:"Клиенты Rhodex. Результаты индивидуальны и зависят от регулярности ухода.",
     lA:"Что такое барьер кожи и как он работает",
     lB:"Почему SPF — главное средство против пигментации",
-    lC:"Посмотреть все продукты" }
+    lC:"Смотреть все продукты" }
 };
 function t(k){ return T[lang][k] || k; }
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
@@ -393,10 +393,10 @@ function render(){
   if (step === 'intro') {
     var pr = (typeof liveResults === 'function') ? liveResults().slice(0, 3) : [];
     h = '<div class="qi">'
-      + '<div class="qi-faces"><figure><img src="../images/quiz/oily.webp" alt="" width="216" height="216"><figcaption>Жирная</figcaption></figure><figure><img src="../images/quiz/dry.webp" alt="" width="216" height="216"><figcaption>Сухая</figcaption></figure><figure><img src="../images/quiz/combination.webp" alt="" width="216" height="216"><figcaption>Комби</figcaption></figure><figure><img src="../images/quiz/normal.webp" alt="" width="216" height="216"><figcaption>Нормальная</figcaption></figure></div>'
+      + '<div class="qi-faces"><figure><img src="../images/quiz/oily.webp" alt="" width="216" height="216"><figcaption>Жирная</figcaption></figure><figure><img src="../images/quiz/dry.webp" alt="" width="216" height="216"><figcaption>Сухая</figcaption></figure><figure><img src="../images/quiz/combination.webp" alt="" width="216" height="216"><figcaption>Комбинированная</figcaption></figure><figure><img src="../images/quiz/normal.webp" alt="" width="216" height="216"><figcaption>Нормальная</figcaption></figure></div>'
       + '<p class="step-n" style="margin:22px 0 10px;text-align:center">' + t('meta') + '</p>'
       + '<h2 class="qi-h">' + t('lead') + '</h2>'
-      + '<p class="qi-get">По итогам теста вы узнаете:</p><ul class="qi-list"><li>Ваш тип кожи — жирная, сухая, комбинированная или нормальная</li><li>Уровень чувствительности и основные проблемы</li><li>Бесплатный персональный совет специалиста в Telegram</li></ul>'
+      + '<p class="qi-get">По итогам теста вы получите:</p><ul class="qi-list"><li>Ваш тип кожи — жирная, сухая, комбинированная или нормальная</li><li>Уровень чувствительности и основные проблемы</li><li>Бесплатный персональный совет специалиста в Telegram</li></ul>'
       + '<button class="btn qi-btn" onclick="go(\'questions\')">' + t('start') + ' →</button>'
       + (pr.length ? '<div class="qi-proof"><div class="qi-ph"><span>Результаты наших клиентов</span><a href="' + RESULTS_PAGE + '">Все →</a></div><div class="qi-pics">'
           + pr.map(function(r){ return '<a href="' + RESULTS_PAGE + '"><img src="' + r.image + '" alt="" loading="lazy"><b>' + durationLabel(r, lang) + '</b></a>'; }).join('')
@@ -406,7 +406,7 @@ function render(){
 
   else if (step === 'questions') {
     var q = QS[qi];
-    h = '<p class="step-n">' + (qi + 1) + ' / ' + total + ' ' + t('of') + '</p>'
+    h = '<p class="step-n">' + t('of') + ' ' + (qi + 1) + ' / ' + total + '</p>'
       + '<h2 class="q-ask">' + q[lang] + '</h2>';
     q.opts.forEach(function(o, i){
       h += '<button type="button" class="opt" onclick="pick(' + qi + ',' + i + ')">'
@@ -417,7 +417,7 @@ function render(){
   }
 
   else if (step === 'sens') {
-    h = '<p class="step-n">' + (QS.length + 1) + ' / ' + total + ' ' + t('of') + '</p>'
+    h = '<p class="step-n">' + t('of') + ' ' + (QS.length + 1) + ' / ' + total + '</p>'
       + '<h2 class="q-ask">' + SENSQ[lang] + '</h2>';
     SENSQ.opts.forEach(function(o, i){
       h += '<button type="button" class="opt" onclick="pickSens(' + o.v + ')">'
@@ -427,7 +427,7 @@ function render(){
   }
 
   else if (step === 'concerns') {
-    h = '<p class="step-n">' + total + ' / ' + total + ' ' + t('of') + '</p>'
+    h = '<p class="step-n">' + t('of') + ' ' + total + ' / ' + total + '</p>'
       + '<h2 class="q-ask">' + t('concQ') + '</h2>';
     CONC.forEach(function(o){
       var on = concerns.indexOf(o.v) > -1;
@@ -564,7 +564,7 @@ function finish(){
   if (type === 'dry' || concerns.indexOf('dryness') > -1) chips.push(lang === 'ru' ? 'Обезвоженная' : 'Suvsizlangan');
   if (concerns.indexOf('pigment') > -1) chips.push(lang === 'ru' ? 'Неровный тон' : 'Notekis ton');
   if (concerns.indexOf('acne') > -1) chips.push(lang === 'ru' ? 'Склонная к высыпаниям' : 'Toshmaga moyil');
-  if (concerns.indexOf('redness') > -1) chips.push(lang === 'ru' ? 'Склонная к покраснению' : 'Qizarishga moyil');
+  if (concerns.indexOf('redness') > -1) chips.push(lang === 'ru' ? 'Склонная к покраснениям' : 'Qizarishga moyil');
 
   out = { type:type, sensRaw:raw, sensLevel:lvl, concerns:concerns.slice(), plan:plan, chips:chips };
   step = 'results';
@@ -619,7 +619,7 @@ function resultText(){
   var ty = TYPES[out.type], sl = SENSTXT[out.sensLevel];
   var L = lang === 'ru'
     ? {h:'Результат теста кожи Rhodex', ty:'Тип кожи', se:'Чувствительность', co:'Беспокоит', no:'не выбрано',
-       ask:'Хочу разобрать результат и подобрать уход.'}
+       ask:'Хочу обсудить результат и подобрать уход.'}
     : {h:'Rhodex teri testi natijasi', ty:'Teri tipi', se:'Sezgirlik', co:'Muammolar', no:'tanlanmagan',
        ask:'Natijani koʻrib chiqib, menga mos parvarishni tanlashda yordam bering.'};
   var cl = out.concerns.length
